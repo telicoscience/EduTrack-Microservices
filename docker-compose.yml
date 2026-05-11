@@ -1,0 +1,66 @@
+version: '3.9'
+
+services:
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: edutrack-rabbitmq
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    environment:
+      RABBITMQ_DEFAULT_USER: guest
+      RABBITMQ_DEFAULT_PASS: guest
+
+  student-db:
+    image: postgres:16
+    container_name: edutrack-student-db
+    environment:
+      POSTGRES_DB: student_db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5433:5432"
+    volumes:
+      - student_db_data:/var/lib/postgresql/data
+
+  classroom-db:
+    image: postgres:16
+    container_name: edutrack-classroom-db
+    environment:
+      POSTGRES_DB: classroom_db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5434:5432"
+    volumes:
+      - classroom_db_data:/var/lib/postgresql/data
+
+  activity-db:
+    image: postgres:16
+    container_name: edutrack-activity-db
+    environment:
+      POSTGRES_DB: activity_db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5435:5432"
+    volumes:
+      - activity_db_data:/var/lib/postgresql/data
+
+  grade-db:
+    image: postgres:16
+    container_name: edutrack-grade-db
+    environment:
+      POSTGRES_DB: grade_db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5436:5432"
+    volumes:
+      - grade_db_data:/var/lib/postgresql/data
+
+volumes:
+  student_db_data:
+  classroom_db_data:
+  activity_db_data:
+  grade_db_data:
