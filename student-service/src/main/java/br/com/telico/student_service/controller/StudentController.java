@@ -26,8 +26,8 @@ public class StudentController {
     
     // Criar um novo método chamado searchByName
     @GetMapping("/search")
-    public List<Map<String,Object>> searchByName(@RequestParam String name){
-        return List.of(Map.of("id", 1, "name", name));
+    public List<Student> searchByName(@RequestParam String name){
+        return List.of(new Student(1L, name));
     }
 
     @GetMapping("/{id}")
@@ -38,8 +38,9 @@ public class StudentController {
 
     // Criar um método create 
     @PostMapping 
-    public Map<String, Object> create( @RequestBody Map<String, Object> body)
+    public Student create( @RequestBody Map<String, Object> body)
     {
-        return Map.of("id", 3, "name", body.get("name"));
+        String name = body.get("name").toString();
+        return new Student(3L, name);
     }
 }
