@@ -7,7 +7,8 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 import java.util.Map;
 import org.springframework.web.bind.annotation.RequestParam;
-
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.PostMapping;
 @RestController
 @RequestMapping("/students")
 public class StudentController {
@@ -37,5 +38,12 @@ public class StudentController {
     @GetMapping("/search")
     public List<Map<String,Object>> searchByName(@RequestParam String name){
         return List.of(Map.of("id", 1, "name", name));
+    }
+
+    // Criar um método create 
+    @PostMapping 
+    public Map<String, Object> create( @RequestBody Map<String, Object> body)
+    {
+        return Map.of("id", 3, "name", body.get("name"));
     }
 }
