@@ -5,7 +5,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
-import java.util.Map; 
+import java.util.Map;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @RestController
 @RequestMapping("/students")
@@ -30,5 +31,11 @@ public class StudentController {
         return Map.of("id", id, 
                        "name", "João"       
         ); 
+    }
+
+    // Criar um novo método chamado searchByName
+    @GetMapping("/search")
+    public List<Map<String,Object>> searchByName(@RequestParam String name){
+        return List.of(Map.of("id", 1, "name", name));
     }
 }
