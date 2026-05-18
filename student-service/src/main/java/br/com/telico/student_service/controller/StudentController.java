@@ -9,36 +9,32 @@ import java.util.Map;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.PostMapping;
+import br.com.telico.student_service.model.Student;
+
 @RestController
 @RequestMapping("/students")
 public class StudentController {
 
     // Endpoint responsável por listar alunos temporários em memória.
     @GetMapping
-    public List<Map<String, Object>> list() {
+    public List<Student> list() {
         return List.of(
-            Map.of(
-                "id", 1,
-                "name", "João"
-            ),
-            Map.of(
-                "id", 2,
-                "name", "Maria"
-            )
-        );
+            new Student(1L, "João"),
+            new Student(2L, "Maria")
+);
     }
-    @GetMapping("/{id}")
-    public Map<String, Object> getStudentById(@PathVariable long id){
-        return Map.of("id", id, 
-                       "name", "João"       
-        ); 
-    }
-
+    
     // Criar um novo método chamado searchByName
     @GetMapping("/search")
     public List<Map<String,Object>> searchByName(@RequestParam String name){
         return List.of(Map.of("id", 1, "name", name));
     }
+
+    @GetMapping("/{id}")
+    public Student getStudentById(@PathVariable Long id){
+        return new Student(id, "João");
+    }
+
 
     // Criar um método create 
     @PostMapping 
