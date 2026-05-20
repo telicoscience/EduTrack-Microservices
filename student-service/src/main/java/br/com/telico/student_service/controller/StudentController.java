@@ -10,18 +10,23 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.PostMapping;
 import br.com.telico.student_service.model.Student;
+import br.com.telico.student_service.service.StudentService;
 
 @RestController
 @RequestMapping("/students")
 public class StudentController {
+    // Cria um atributo de classe chamado studentService
+    private final StudentService studentService;
+
+    // Cria um construtor 
+    public StudentController(StudentService studentService) {
+        this.studentService = studentService;
+    }
 
     // Endpoint responsável por listar alunos temporários em memória.
     @GetMapping
     public List<Student> list() {
-        return List.of(
-            new Student(1L, "João"),
-            new Student(2L, "Maria")
-);
+        return studentService.findAll();
     }
     
     // Criar um novo método chamado searchByName
@@ -43,4 +48,5 @@ public class StudentController {
         String name = body.get("name").toString();
         return new Student(3L, name);
     }
+
 }
