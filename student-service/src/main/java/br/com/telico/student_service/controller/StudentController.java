@@ -23,23 +23,16 @@ public class StudentController {
         this.studentService = studentService;
     }
 
-    // Endpoint responsável por listar alunos temporários em memória.
-    @GetMapping
-    public List<Student> list() {
-        return studentService.findAll();
-    }
+   @GetMapping("/{id}")
+    public Student getStudentById(@PathVariable Long id){
+        return studentService.findById(id);
+}
     
     // Criar um novo método chamado searchByName
     @GetMapping("/search")
     public List<Student> searchByName(@RequestParam String name){
         return List.of(new Student(1L, name));
     }
-
-    @GetMapping("/{id}")
-    public Student getStudentById(@PathVariable Long id){
-        return new Student(id, "João");
-    }
-
 
     // Criar um método create 
     @PostMapping 
