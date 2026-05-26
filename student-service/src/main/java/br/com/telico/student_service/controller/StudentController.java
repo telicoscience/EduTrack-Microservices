@@ -40,6 +40,6 @@ public class StudentController {
     @PostMapping
     public Student create(@RequestBody Map<String, Object> body) {
         String name = body.get("name").toString();
-        return new Student(3L, name);
+        return studentService.create(name);
     }
 }

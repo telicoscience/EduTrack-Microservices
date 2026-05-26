@@ -16,6 +16,12 @@ public class StudentService {
         );
     }
 
+    public Student create(String name) {
+        return new Student(3L, name);
+    }
+
+    
+
     public Student findById(Long id) {
         return new Student(id, "João");
     }
