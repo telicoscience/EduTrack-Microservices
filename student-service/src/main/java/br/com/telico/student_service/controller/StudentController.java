@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import br.com.telico.student_service.dto.CreateStudentRequest;
+import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/students")
@@ -38,7 +39,7 @@ public class StudentController {
     }
 
     @PostMapping
-    public Student create(@RequestBody CreateStudentRequest request) {
+    public Student create(@Valid @RequestBody CreateStudentRequest request) {
         String name = request.getName().toString();
         return studentService.create(name);
     }
