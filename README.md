@@ -4,26 +4,28 @@ Sistema educacional desenvolvido com arquitetura de microsserviços utilizando J
 
 ---
 
-## Objetivo
+# Objetivo
 
-Este projeto foi desenhado como um projeto de portfólio para demonstrar competências de backend moderno utilizando:
+Este projeto foi criado como um projeto de portfólio para consolidar conhecimentos em backend moderno e arquitetura de microsserviços utilizando Java e Spring Boot.
 
-- Java moderno
-- Spring Boot
+O foco principal é desenvolver uma aplicação pequena, incremental e explicável tecnicamente em entrevistas, demonstrando:
+
+- Arquitetura em camadas
 - APIs REST
 - Microsserviços
 - Docker
 - PostgreSQL
 - Mensageria
-- Arquitetura em camadas
+- Testes automatizados
+- Boas práticas de backend
 
-O foco do projeto é construir uma aplicação pequena, porém arquiteturalmente sólida, explicável em entrevistas técnicas e evolutiva ao longo do tempo.
+O projeto também serve como trilha prática de aprendizagem em backend enterprise.
 
 ---
 
-## Stack Tecnológica
+# Stack Tecnológica
 
-### Backend
+## Backend
 
 - Java 21
 - Spring Boot
@@ -31,27 +33,27 @@ O foco do projeto é construir uma aplicação pequena, porém arquiteturalmente
 - Spring Data JPA
 - Hibernate
 
-### Banco de Dados
+## Banco de Dados
 
 - PostgreSQL
 
-### Microsserviços e Infraestrutura
+## Microsserviços e Infraestrutura
 
 - RabbitMQ
 - Spring Cloud Gateway
 - Docker
 - Docker Compose
 
-### Testes
+## Testes
 
 - JUnit
 - Mockito
 
-### Documentação
+## Documentação
 
 - OpenAPI / Swagger
 
-### DevOps
+## DevOps
 
 - GitHub Actions
 
@@ -96,7 +98,7 @@ edutrack-microservices/
 
 # Status Atual do Desenvolvimento
 
-Atualmente o projeto possui o `student-service` parcialmente implementado.
+Atualmente o projeto possui o `student-service` implementado com lógica simulada em memória, endpoints REST básicos, validação, tratamento de erros e testes unitários iniciais.
 
 ## Funcionalidades já implementadas
 
@@ -104,10 +106,14 @@ Atualmente o projeto possui o `student-service` parcialmente implementado.
 - Endpoints REST básicos
 - Controller Layer
 - Service Layer
+- DTO Layer
 - Injeção de Dependência
 - Serialização automática JSON
 - Organização em camadas
 - Modelo orientado a objetos inicial
+- Bean Validation
+- Tratamento global de exceções
+- Testes unitários do Service Layer
 
 ---
 
@@ -162,12 +168,6 @@ GET /students/1
 ## Buscar aluno por nome
 
 ```http
-GET /students/search?name=joao
-```
-
-### Exemplo
-
-```http
 GET /students/search?name=ana
 ```
 
@@ -177,7 +177,7 @@ GET /students/search?name=ana
 [
   {
     "id": 1,
-    "name": "ana"
+    "name": "Ana"
   }
 ]
 ```
@@ -209,6 +209,44 @@ POST /students
 
 ---
 
+# Validação e tratamento de erros
+
+O projeto já possui validação básica de entrada utilizando Bean Validation.
+
+## Exemplo de requisição inválida
+
+```http
+POST /students
+```
+
+### Body inválido
+
+```json
+{
+  "name": ""
+}
+```
+
+### Resposta
+
+```json
+{
+  "error": "Validation failed",
+  "fields": {
+    "name": "não deve estar em branco"
+  },
+  "status": 400
+}
+```
+
+O tratamento global de erros é realizado utilizando:
+
+- `@RestControllerAdvice`
+- `@ExceptionHandler`
+- `MethodArgumentNotValidException`
+
+---
+
 # Conceitos já implementados
 
 O projeto já demonstra:
@@ -216,15 +254,39 @@ O projeto já demonstra:
 - REST APIs
 - Spring Controllers
 - Service Layer
+- DTO Pattern
 - Dependency Injection
 - Inversion of Control (IoC)
 - JSON Serialization
+- Bean Validation
+- Global Exception Handling
 - Path Variables
 - Query Parameters
 - Request Body
 - Arquitetura em camadas
 - Programação Orientada a Objetos
 - Docker Compose inicial
+- Unit Testing com JUnit
+
+---
+
+# Testes implementados
+
+Atualmente o projeto possui testes unitários básicos do `StudentService`.
+
+## Testes existentes
+
+- `shouldReturnAllStudents`
+- `shouldReturnStudentById`
+- `shouldSearchStudentByName`
+- `shouldCreateStudent`
+
+## Executar testes
+
+```bash
+cd student-service
+./mvnw test
+```
 
 ---
 
@@ -237,14 +299,27 @@ O projeto já demonstra:
 - [x] Criar model `Student`
 - [x] Criar Service Layer
 - [x] Injeção de dependência
-- [ ] DTOs
-- [ ] Validação
-- [ ] Testes
+- [x] DTOs
+- [x] Validação
+- [x] Tratamento global de exceções
+- [x] Testes unitários básicos
 - [ ] Integração com PostgreSQL
 
 ---
 
-## Sprint 2 — classroom-service
+## Sprint 2 — Persistência com PostgreSQL
+
+- [ ] Configuração do banco PostgreSQL
+- [ ] Integração Spring Data JPA
+- [ ] Hibernate
+- [ ] Entity `Student`
+- [ ] Repository Layer
+- [ ] Persistência real no banco
+- [ ] Migração da lógica fake em memória
+
+---
+
+## Sprint 3 — classroom-service
 
 - [ ] CRUD de turmas
 - [ ] Matrículas
@@ -252,7 +327,7 @@ O projeto já demonstra:
 
 ---
 
-## Sprint 3 — activity-service
+## Sprint 4 — activity-service
 
 - [ ] Cadastro de atividades
 - [ ] Tipos de atividade
@@ -260,7 +335,7 @@ O projeto já demonstra:
 
 ---
 
-## Sprint 4 — grade-service
+## Sprint 5 — grade-service
 
 - [ ] Lançamento de notas
 - [ ] Cálculo de médias
@@ -268,34 +343,34 @@ O projeto já demonstra:
 
 ---
 
-## Sprint 5 — RabbitMQ
+## Sprint 6 — RabbitMQ
 
 - [ ] Eventos entre serviços
 - [ ] Publicação e consumo de mensagens
 
 ---
 
-## Sprint 6 — notification-service
+## Sprint 7 — notification-service
 
 - [ ] Consumo de eventos
 - [ ] Simulação de notificações
 
 ---
 
-## Sprint 7 — API Gateway
+## Sprint 8 — API Gateway
 
 - [ ] Gateway centralizado
 - [ ] Roteamento de serviços
 
 ---
 
-## Sprint 8 — Qualidade e DevOps
+## Sprint 9 — Qualidade e DevOps
 
-- [ ] Testes automatizados
 - [ ] GitHub Actions
 - [ ] Dockerização completa
 - [ ] Swagger/OpenAPI
 - [ ] README final
+- [ ] Testes de integração
 
 ---
 
@@ -359,6 +434,10 @@ Este projeto está sendo utilizado para consolidar conhecimentos em:
 - Spring Boot
 - Microsserviços
 - APIs REST
+- DTO Pattern
+- Bean Validation
+- Testes automatizados
+- Tratamento global de exceções
 - Docker
 - PostgreSQL
 - RabbitMQ
