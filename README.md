@@ -1,3 +1,4 @@
+````markdown
 # EduTrack Microservices
 
 Sistema educacional desenvolvido com arquitetura de microsserviços utilizando Java, Spring Boot e React.
@@ -27,8 +28,6 @@ O foco principal é desenvolver uma aplicação incremental e explicável tecnic
 - Mensageria
 - Testes automatizados
 - Boas práticas de engenharia de software
-
-O projeto também funciona como trilha prática de aprendizagem em backend enterprise.
 
 ---
 
@@ -107,40 +106,61 @@ edutrack-microservices/
 ├── docs/
 ├── docker-compose.yml
 └── README.md
-Status Atual do Desenvolvimento
+````
+
+---
+
+# Status Atual do Desenvolvimento
 
 Atualmente o projeto possui:
 
-student-service funcional
-Frontend inicial integrado
-Endpoints REST básicos
-Validação de entrada
-Tratamento global de erros
-Testes unitários básicos
-Integração frontend/backend
-Funcionalidades já implementadas
-Backend
-Estrutura Spring Boot
-Controller Layer
-Service Layer
-DTO Layer
-Injeção de Dependência
-Bean Validation
-Tratamento global de exceções
-Serialização JSON
-Testes unitários do Service Layer
-Frontend
-Dashboard inicial
-Listagem de alunos
-Cadastro de aluno
-Busca por nome
-Integração com API Spring Boot
-Recarregamento da lista
-Tratamento básico de erro
-Endpoints já implementados
-Listar alunos
+* `student-service` funcional
+* Frontend inicial integrado
+* Endpoints REST básicos
+* Validação de entrada
+* Tratamento global de erros
+* Testes unitários básicos
+* Integração frontend/backend
+
+---
+
+# Funcionalidades já implementadas
+
+## Backend
+
+* Estrutura Spring Boot
+* Controller Layer
+* Service Layer
+* DTO Layer
+* Injeção de Dependência
+* Bean Validation
+* Tratamento global de exceções
+* Serialização JSON
+* Testes unitários do Service Layer
+
+## Frontend
+
+* Dashboard inicial
+* Listagem de alunos
+* Cadastro de aluno
+* Busca por nome
+* Integração com API Spring Boot
+* Recarregamento da lista
+* Tratamento básico de erro
+
+---
+
+# Endpoints já implementados
+
+## Listar alunos
+
+```http
 GET /students
-Exemplo de resposta
+```
+
+### Exemplo de resposta
+
+```json
 [
   {
     "id": 1,
@@ -151,46 +171,92 @@ Exemplo de resposta
     "name": "Maria"
   }
 ]
-Buscar aluno por ID
+```
+
+## Buscar aluno por ID
+
+```http
 GET /students/{id}
-Exemplo
+```
+
+### Exemplo
+
+```http
 GET /students/1
-Resposta
+```
+
+### Resposta
+
+```json
 {
   "id": 1,
   "name": "João"
 }
-Buscar aluno por nome
+```
+
+## Buscar aluno por nome
+
+```http
 GET /students/search?name=Ana
-Resposta
+```
+
+### Resposta
+
+```json
 [
   {
     "id": 1,
     "name": "Ana"
   }
 ]
-Criar aluno
+```
+
+## Criar aluno
+
+```http
 POST /students
-Body
+```
+
+### Body
+
+```json
 {
   "name": "Carlos"
 }
-Resposta
+```
+
+### Resposta
+
+```json
 {
   "id": 3,
   "name": "Carlos"
 }
-Validação e tratamento de erros
+```
+
+---
+
+# Validação e tratamento de erros
 
 O projeto já possui validação básica de entrada utilizando Bean Validation.
 
-Exemplo de requisição inválida
+## Exemplo de requisição inválida
+
+```http
 POST /students
-Body inválido
+```
+
+### Body inválido
+
+```json
 {
   "name": ""
 }
-Resposta
+```
+
+### Resposta
+
+```json
 {
   "error": "Validation failed",
   "fields": {
@@ -198,158 +264,237 @@ Resposta
   },
   "status": 400
 }
+```
 
 O tratamento global de erros é realizado utilizando:
 
-@RestControllerAdvice
-@ExceptionHandler
-MethodArgumentNotValidException
-Frontend
+* `@RestControllerAdvice`
+* `@ExceptionHandler`
+* `MethodArgumentNotValidException`
 
-O projeto possui um frontend inicial em React + Vite para demonstrar visualmente o consumo da API student-service.
+---
 
-Funcionalidades do frontend
-Listagem de alunos
-Cadastro de aluno
-Busca por nome
-Recarregamento da lista
-Integração com API Spring Boot
-Tratamento básico de erro de validação
-Conceitos já implementados
+# Frontend
+
+O projeto possui um frontend inicial em React + Vite para demonstrar visualmente o consumo da API `student-service`.
+
+## Funcionalidades do frontend
+
+* Listagem de alunos
+* Cadastro de aluno
+* Busca por nome
+* Recarregamento da lista
+* Integração com API Spring Boot
+* Tratamento básico de erro de validação
+
+---
+
+# Conceitos já implementados
 
 O projeto já demonstra:
 
-REST APIs
-Spring Controllers
-Service Layer
-DTO Pattern
-Dependency Injection
-Inversion of Control (IoC)
-JSON Serialization
-Bean Validation
-Global Exception Handling
-Path Variables
-Query Parameters
-Request Body
-Arquitetura em camadas
-Programação Orientada a Objetos
-Docker Compose inicial
-Unit Testing com JUnit
-Integração frontend/backend
-React consumindo API Java
-Testes implementados
+* REST APIs
+* Spring Controllers
+* Service Layer
+* DTO Pattern
+* Dependency Injection
+* Inversion of Control
+* JSON Serialization
+* Bean Validation
+* Global Exception Handling
+* Path Variables
+* Query Parameters
+* Request Body
+* Arquitetura em camadas
+* Programação Orientada a Objetos
+* Docker Compose inicial
+* Unit Testing com JUnit
+* Integração frontend/backend
+* React consumindo API Java
 
-Atualmente o projeto possui testes unitários básicos do StudentService.
+---
 
-Testes existentes
-shouldReturnAllStudents
-shouldReturnStudentById
-shouldSearchStudentByName
-shouldCreateStudent
-Executar testes
+# Testes implementados
+
+Atualmente o projeto possui testes unitários básicos do `StudentService`.
+
+## Testes existentes
+
+* `shouldReturnAllStudents`
+* `shouldReturnStudentById`
+* `shouldSearchStudentByName`
+* `shouldCreateStudent`
+
+## Executar testes
+
+```bash
 cd student-service
 ./mvnw test
-Roadmap Técnico
-Sprint 1 — student-service
- Estrutura Spring Boot
- Endpoints REST
- Model Student
- Service Layer
- DTOs
- Validação
- Tratamento global de exceções
- Testes unitários básicos
- Frontend inicial React
- Integração com PostgreSQL
-Sprint 2 — Persistência com PostgreSQL
- Configuração do PostgreSQL
- Spring Data JPA
- Hibernate
- Entity Student
- Repository Layer
- Persistência real no banco
-Sprint 3 — classroom-service
- CRUD de turmas
- Matrículas
- Relacionamento aluno/turma
-Sprint 4 — activity-service
- Cadastro de atividades
- Tipos de atividade
- Integração com turmas
-Sprint 5 — grade-service
- Lançamento de notas
- Cálculo de médias
- Histórico acadêmico
-Sprint 6 — RabbitMQ
- Eventos entre serviços
- Publicação e consumo de mensagens
-Sprint 7 — notification-service
- Consumo de eventos
- Simulação de notificações
-Sprint 8 — API Gateway
- Gateway centralizado
- Roteamento de serviços
-Sprint 9 — Qualidade e DevOps
- GitHub Actions
- Dockerização completa
- Swagger/OpenAPI
- Testes de integração
- README final
-Como executar o projeto
-Subir infraestrutura local
+```
+
+---
+
+# Roadmap Técnico
+
+## Sprint 1 — student-service
+
+* [x] Estrutura Spring Boot
+* [x] Endpoints REST
+* [x] Model `Student`
+* [x] Service Layer
+* [x] DTOs
+* [x] Validação
+* [x] Tratamento global de exceções
+* [x] Testes unitários básicos
+* [x] Frontend inicial React
+* [ ] Integração com PostgreSQL
+
+## Sprint 2 — Persistência com PostgreSQL
+
+* [ ] Configuração do PostgreSQL
+* [ ] Spring Data JPA
+* [ ] Hibernate
+* [ ] Entity `Student`
+* [ ] Repository Layer
+* [ ] Persistência real no banco
+
+## Sprint 3 — classroom-service
+
+* [ ] CRUD de turmas
+* [ ] Matrículas
+* [ ] Relacionamento aluno/turma
+
+## Sprint 4 — activity-service
+
+* [ ] Cadastro de atividades
+* [ ] Tipos de atividade
+* [ ] Integração com turmas
+
+## Sprint 5 — grade-service
+
+* [ ] Lançamento de notas
+* [ ] Cálculo de médias
+* [ ] Histórico acadêmico
+
+## Sprint 6 — RabbitMQ
+
+* [ ] Eventos entre serviços
+* [ ] Publicação e consumo de mensagens
+
+## Sprint 7 — notification-service
+
+* [ ] Consumo de eventos
+* [ ] Simulação de notificações
+
+## Sprint 8 — API Gateway
+
+* [ ] Gateway centralizado
+* [ ] Roteamento de serviços
+
+## Sprint 9 — Qualidade e DevOps
+
+* [ ] GitHub Actions
+* [ ] Dockerização completa
+* [ ] Swagger/OpenAPI
+* [ ] Testes de integração
+* [ ] README final
+
+---
+
+# Como executar o projeto
+
+## Subir infraestrutura local
+
+```bash
 docker compose up -d
-Executar backend
+```
+
+## Executar backend
+
+```bash
 cd student-service
 ./mvnw spring-boot:run
+```
 
 Backend disponível em:
 
+```text
 http://localhost:8081
-Executar frontend
+```
+
+## Executar frontend
+
+```bash
 cd frontend
 npm install
 npm run dev
+```
 
 Frontend disponível em:
 
+```text
 http://localhost:5173
-Serviços locais disponíveis
-RabbitMQ
+```
+
+---
+
+# Serviços locais disponíveis
+
+## RabbitMQ
+
+```text
 http://localhost:15672
+```
 
 Usuário:
 
+```text
 guest
+```
 
 Senha:
 
+```text
 guest
-PostgreSQL
-Serviço	Porta
-student-db	5433
-classroom-db	5434
-activity-db	5435
-grade-db	5436
-Objetivos de aprendizado do projeto
+```
+
+## PostgreSQL
+
+| Serviço      | Porta |
+| ------------ | ----- |
+| student-db   | 5433  |
+| classroom-db | 5434  |
+| activity-db  | 5435  |
+| grade-db     | 5436  |
+
+---
+
+# Objetivos de aprendizado do projeto
 
 Este projeto está sendo utilizado para consolidar conhecimentos em:
 
-Java moderno
-Spring Boot
-Microsserviços
-APIs REST
-React
-Integração frontend/backend
-DTO Pattern
-Bean Validation
-Testes automatizados
-Tratamento global de exceções
-Docker
-PostgreSQL
-RabbitMQ
-Arquitetura backend
-Boas práticas de engenharia de software
-DevOps básico
-Observações
+* Java moderno
+* Spring Boot
+* Microsserviços
+* APIs REST
+* React
+* Integração frontend/backend
+* DTO Pattern
+* Bean Validation
+* Testes automatizados
+* Tratamento global de exceções
+* Docker
+* PostgreSQL
+* RabbitMQ
+* Arquitetura backend
+* Boas práticas de engenharia de software
+* DevOps básico
+
+---
+
+# Observações
 
 O projeto ainda está em desenvolvimento e parte da lógica atual utiliza dados simulados em memória para fins de aprendizado incremental e construção gradual da arquitetura.
+
+```
+```
