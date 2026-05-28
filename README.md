@@ -8,7 +8,7 @@ Sistema educacional desenvolvido com arquitetura de microsserviços utilizando J
 # Preview da aplicação
 
 <p align="center">
-  <img src="./screenshots/frontend-dashboard.png" width="950">
+  <img src="./screenshot/frontend-dashboard.png" width="950">
 </p>
 
 ---
