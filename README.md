@@ -1,4 +1,3 @@
-````markdown
 # EduTrack Microservices
 
 Sistema educacional desenvolvido com arquitetura de microsserviços utilizando Java, Spring Boot e React.
