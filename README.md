@@ -495,5 +495,13 @@ Este projeto está sendo utilizado para consolidar conhecimentos em:
 
 O projeto ainda está em desenvolvimento e parte da lógica atual utiliza dados simulados em memória para fins de aprendizado incremental e construção gradual da arquitetura.
 
+## Persistência de dados
+
+O projeto utiliza PostgreSQL com Spring Data JPA e Hibernate para persistência dos dados.
+
+Mais detalhes em:
+
+- `docs/persistence.md`
+
 ```
 ```
