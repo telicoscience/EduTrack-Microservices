@@ -3,6 +3,11 @@
 Sistema educacional desenvolvido com arquitetura de microsserviços utilizando Java, Spring Boot e React.
 
 ---
+# Architecture
+
+![Architecture](docs/diagrams/architecture.png)
+
+Current target architecture for the EduTrack ecosystem.
 
 # Preview da aplicação
 
