@@ -136,6 +136,9 @@ Atualmente o projeto possui:
 * Tratamento global de exceções
 * Serialização JSON
 * Testes unitários do Service Layer
+* Persistência com PostgreSQL
+* Repository Layer com Spring Data JPA
+* Consultas com Query Methods
 
 ## Frontend
 
@@ -310,6 +313,10 @@ O projeto já demonstra:
 * Unit Testing com JUnit
 * Integração frontend/backend
 * React consumindo API Java
+* JPA Entity Mapping
+* Repository Pattern
+* Spring Data JPA Query Methods
+* Persistência real com PostgreSQL
 
 ---
 
@@ -350,12 +357,13 @@ cd student-service
 
 ## Sprint 2 — Persistência com PostgreSQL
 
-* [ ] Configuração do PostgreSQL
-* [ ] Spring Data JPA
-* [ ] Hibernate
-* [ ] Entity `Student`
-* [ ] Repository Layer
-* [ ] Persistência real no banco
+* [x] Configuração do PostgreSQL
+* [x] Spring Data JPA
+* [x] Hibernate
+* [x] Entity `Student`
+* [x] Repository Layer
+* [x] Consulta por nome com Query Method 
+
 
 ## Sprint 3 — classroom-service
 

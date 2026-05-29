@@ -32,8 +32,6 @@ public class StudentService {
     }
 
     public List<Student> searchByName(String name) {
-        return List.of(
-            new Student(1L, name)
-        );
+        return studentRepository.findByNameContainingIgnoreCase(name);
     }
 }
