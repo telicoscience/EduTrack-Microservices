@@ -1,29 +1,34 @@
 package br.com.telico.student_service.service;
 
 import java.util.List;
-
 import org.springframework.stereotype.Service;
 import br.com.telico.student_service.model.Student;
+import br.com.telico.student_service.repository.StudentRepository;
 
 // Esse arquivo guarda as regras de negócios sobre os alunos. 
 @Service
 public class StudentService {
+   private final StudentRepository studentRepository;
+
+   public StudentService(StudentRepository studentRepository) {
+    this.studentRepository = studentRepository;
+    }
+        
+
 
     public List<Student> findAll() {
-        return List.of(
-            new Student(1L, "João"),
-            new Student(2L, "Maria")
-        );
+        return studentRepository.findAll();
     }
 
     public Student create(String name) {
-        return new Student(3L, name);
+        Student student = new Student(null, name);
+        return studentRepository.save(student);
     }
 
     
 
     public Student findById(Long id) {
-        return new Student(id, "João");
+        return studentRepository.findById(id).orElse(null);
     }
 
     public List<Student> searchByName(String name) {
