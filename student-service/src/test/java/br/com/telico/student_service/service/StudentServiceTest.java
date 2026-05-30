@@ -89,4 +89,11 @@ public class StudentServiceTest {
         assertEquals(3L, student.getId());
         assertEquals("Carla", student.getName());
     }
+
+    @Test
+    void shouldDeleteStudent() {
+        
+    }
+
+
 }

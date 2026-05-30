@@ -4,6 +4,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 import br.com.telico.student_service.model.Student;
 import br.com.telico.student_service.repository.StudentRepository;
+import br.com.telico.student_service.exception.StudentNotFoundException;
 
 // Esse arquivo guarda as regras de negócios sobre os alunos. 
 @Service
@@ -28,7 +29,7 @@ public class StudentService {
     
 
     public Student findById(Long id) {
-        return studentRepository.findById(id).orElse(null);
+        return studentRepository.findById(id).orElseThrow(() -> new StudentNotFoundException(id));
     }
 
     public List<Student> searchByName(String name) {

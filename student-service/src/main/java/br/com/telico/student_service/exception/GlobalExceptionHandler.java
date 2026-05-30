@@ -8,9 +8,21 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
+import br.com.telico.student_service.exception.StudentNotFoundException;
 
 @RestControllerAdvice
 public class GlobalExceptionHandler {
+    @ExceptionHandler(StudentNotFoundException.class)
+    public ResponseEntity<Map<String, Object>> handleStudentNotFound(StudentNotFoundException exception) {
+    Map<String, Object> response = new HashMap<>();
+
+    response.put("status", 404);
+    response.put("error", "Student not found");
+    response.put("message", exception.getMessage());
+
+    return ResponseEntity.status(HttpStatus.NOT_FOUND).body(response);
+}
+
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<Map<String, Object>> handleValidationErrors(MethodArgumentNotValidException exception) {

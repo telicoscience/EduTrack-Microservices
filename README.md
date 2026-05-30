@@ -148,6 +148,8 @@ The project currently includes:
 - Dependency injection
 - Bean Validation
 - Global validation exception handling
+- Custom exception handling for student not found cases
+- HTTP 404 response for missing students
 - JSON serialization
 - Service layer unit tests
 - PostgreSQL persistence
@@ -207,6 +209,17 @@ GET /students/1
 {
   "id": 1,
   "name": "Joao"
+}
+```
+
+### Not Found Response
+
+```http
+GET /students/999
+{
+  "error": "Student not found",
+  "message": "Student not found with id: 999",
+  "status": 404
 }
 ```
 
@@ -343,6 +356,9 @@ The project already demonstrates:
 - JSON serialization
 - Bean Validation
 - Global validation exception handling
+- Custom exceptions
+- HTTP status handling
+- Centralized error handling with `@RestControllerAdvice`
 - Path variables
 - Query parameters
 - Request bodies
@@ -413,7 +429,7 @@ cd student-service
 - [x] `POST /students`
 - [x] `PUT /students/{id}`
 - [ ] `DELETE /students/{id}`
-- [ ] Resource-not-found handling
+- [x] 404 Not Found handling
 - [x] Update tests
 - [ ] Delete tests
 - [ ] OpenAPI / Swagger
