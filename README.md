@@ -84,8 +84,10 @@ The system is being developed with a microservices architecture in which each do
 
 ## Planned Microservices
 
+The planned service boundaries are shown below:
+
 | Service | Responsibility |
-|---|---|
+| --- | --- |
 | `student-service` | Student management |
 | `classroom-service` | Classroom and enrollment management |
 | `activity-service` | Activity management |
@@ -363,6 +365,7 @@ The project currently includes basic unit tests for `StudentService`.
 - `shouldReturnStudentById`
 - `shouldSearchStudentByName`
 - `shouldCreateStudent`
+- `shouldUpdateStudent`
 
 ## Run Tests
 
@@ -515,8 +518,10 @@ guest
 
 ## PostgreSQL
 
+The local PostgreSQL service ports are listed below:
+
 | Service | Port |
-|---|---|
+| --- | --- |
 | `student-db` | `5433` |
 | `classroom-db` | `5434` |
 | `activity-db` | `5435` |
