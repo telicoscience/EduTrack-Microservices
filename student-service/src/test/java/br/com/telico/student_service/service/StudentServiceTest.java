@@ -67,36 +67,45 @@ public class StudentServiceTest {
         StudentService service = new StudentService(repository);
 
         when(repository.save(Mockito.any(Student.class))).thenReturn(
-            new Student(3L, "Carlos")
+            new Student(
+                3L,
+                "Carlos",
+                "12345678900",
+                "2026001",
+                "8th grade",
+                "A",
+                "Morning",
+                "Active",
+                "Maria Silva",
+                8.7,
+                96.5
+            )
         );
 
-        CreateStudentRequest request = new CreateStudentRequest();
-        request.setName("Carlos");
-
-        Student student = service.create(request);
+        Student student = service.create(createRequest("Carlos"));
 
         assertEquals(3L, student.getId());
         assertEquals("Carlos", student.getName());
+        assertEquals("12345678900", student.getCpf());
+        assertEquals("2026001", student.getRegistration());
     }
 
     @Test
     void shouldUpdateStudent() {
         StudentRepository repository = Mockito.mock(StudentRepository.class);
         StudentService service = new StudentService(repository);
-        Student existingStudent = new Student(3L, "Carlos");
+        Student existingStudent = new Student(1L, "José");
 
-        when(repository.findById(3L)).thenReturn(Optional.of(existingStudent));
-        when(repository.save(existingStudent)).thenReturn(existingStudent);
+        when(repository.findById(1L)).thenReturn(Optional.of(existingStudent));
+        when(repository.save(Mockito.any(Student.class))).thenAnswer(invocation -> invocation.getArgument(0));
 
-        CreateStudentRequest request = new CreateStudentRequest();
-        request.setName("Carla");
-        request.setRegistration("2026-001");
+        Student updatedStudent = service.update(1L, createRequest("José Atualizado"));
 
-        Student student = service.update(3L, request);
-
-        assertEquals(3L, student.getId());
-        assertEquals("Carla", student.getName());
-        assertEquals("2026-001", student.getRegistration());
+        assertEquals(1L, updatedStudent.getId());
+        assertEquals("José Atualizado", updatedStudent.getName());
+        assertEquals("12345678900", updatedStudent.getCpf());
+        assertEquals("2026001", updatedStudent.getRegistration());
+        assertEquals("8th grade", updatedStudent.getGrade());
     }
 
     @Test
@@ -104,5 +113,20 @@ public class StudentServiceTest {
         
     }
 
+    private CreateStudentRequest createRequest(String name) {
+        CreateStudentRequest request = new CreateStudentRequest();
 
+        request.setName(name);
+        request.setCpf("12345678900");
+        request.setRegistration("2026001");
+        request.setGrade("8th grade");
+        request.setClassGroup("A");
+        request.setShift("Morning");
+        request.setStatus("Active");
+        request.setGuardianName("Maria Silva");
+        request.setAverageScore(8.7);
+        request.setAttendanceRate(96.5);
+
+        return request;
+    }
 }
