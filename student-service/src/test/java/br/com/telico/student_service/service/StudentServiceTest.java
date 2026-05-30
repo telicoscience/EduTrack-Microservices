@@ -11,6 +11,7 @@ import org.mockito.Mockito;
 
 import br.com.telico.student_service.model.Student;
 import br.com.telico.student_service.repository.StudentRepository;
+import br.com.telico.student_service.dto.CreateStudentRequest;
 
 public class StudentServiceTest {
 
@@ -69,7 +70,10 @@ public class StudentServiceTest {
             new Student(3L, "Carlos")
         );
 
-        Student student = service.create("Carlos");
+        CreateStudentRequest request = new CreateStudentRequest();
+        request.setName("Carlos");
+
+        Student student = service.create(request);
 
         assertEquals(3L, student.getId());
         assertEquals("Carlos", student.getName());
@@ -84,10 +88,15 @@ public class StudentServiceTest {
         when(repository.findById(3L)).thenReturn(Optional.of(existingStudent));
         when(repository.save(existingStudent)).thenReturn(existingStudent);
 
-        Student student = service.update(3L, "Carla");
+        CreateStudentRequest request = new CreateStudentRequest();
+        request.setName("Carla");
+        request.setRegistration("2026-001");
+
+        Student student = service.update(3L, request);
 
         assertEquals(3L, student.getId());
         assertEquals("Carla", student.getName());
+        assertEquals("2026-001", student.getRegistration());
     }
 
     @Test

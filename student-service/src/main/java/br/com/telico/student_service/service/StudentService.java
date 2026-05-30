@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import br.com.telico.student_service.model.Student;
 import br.com.telico.student_service.repository.StudentRepository;
 import br.com.telico.student_service.exception.StudentNotFoundException;
+import br.com.telico.student_service.dto.CreateStudentRequest;
 
 // Esse arquivo guarda as regras de negócios sobre os alunos. 
 @Service
@@ -21,8 +22,20 @@ public class StudentService {
         return studentRepository.findAll();
     }
 
-    public Student create(String name) {
-        Student student = new Student(null, name);
+    public Student create(CreateStudentRequest request) {
+        Student student = new Student();
+
+        student.setName(request.getName());
+        student.setCpf(request.getCpf());
+        student.setRegistration(request.getRegistration());
+        student.setGrade(request.getGrade());
+        student.setClassGroup(request.getClassGroup());
+        student.setShift(request.getShift());
+        student.setStatus(request.getStatus());
+        student.setGuardianName(request.getGuardianName());
+        student.setAverageScore(request.getAverageScore());
+        student.setAttendanceRate(request.getAttendanceRate());
+
         return studentRepository.save(student);
     }
 
@@ -38,14 +51,20 @@ public class StudentService {
 
 
 
-    public Student update(Long id, String name) {
-        Student student = studentRepository.findById(id).orElse(null);
+    public Student update(Long id, CreateStudentRequest request) {
+        Student student = findById(id);
 
-        if (student == null) {
-            return null;
-        }
+        student.setName(request.getName());
+        student.setCpf(request.getCpf());
+        student.setRegistration(request.getRegistration());
+        student.setGrade(request.getGrade());
+        student.setClassGroup(request.getClassGroup());
+        student.setShift(request.getShift());
+        student.setStatus(request.getStatus());
+        student.setGuardianName(request.getGuardianName());
+        student.setAverageScore(request.getAverageScore());
+        student.setAttendanceRate(request.getAttendanceRate());
 
-        student.setName(name);
         return studentRepository.save(student);
     }
 
