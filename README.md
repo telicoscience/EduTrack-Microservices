@@ -1,15 +1,16 @@
 # EduTrack Microservices
 
-Sistema educacional desenvolvido com arquitetura de microsserviços utilizando Java, Spring Boot e React.
+Educational system built with a microservices architecture using Java, Spring Boot, and React.
 
 ---
+
 # Architecture
 
 ![Architecture](docs/diagrams/architecture.png)
 
 Current target architecture for the EduTrack ecosystem.
 
-# Preview da aplicação
+# Application Preview
 
 <p align="center">
   <img src="./screenshot/frontend-dashboard.png" width="950">
@@ -17,27 +18,29 @@ Current target architecture for the EduTrack ecosystem.
 
 ---
 
-# Objetivo
+# Purpose
 
-Este projeto foi criado como um projeto de portfólio para consolidar conhecimentos em backend moderno, microsserviços e frontend integrado.
+This portfolio project was created to consolidate knowledge of modern backend development, microservices, and frontend integration.
 
-O foco principal é desenvolver uma aplicação incremental e explicável tecnicamente em entrevistas, demonstrando:
+The main goal is to build an incremental application that can be clearly explained in technical interviews, demonstrating:
 
-- APIs REST
-- Microsserviços
-- Arquitetura em camadas
-- Frontend integrado com backend
+- REST APIs
+- Microservices
+- Layered architecture
+- Frontend and backend integration
 - Docker
 - PostgreSQL
-- Mensageria
-- Testes automatizados
-- Boas práticas de engenharia de software
+- Messaging
+- Automated tests
+- Software engineering best practices
 
 ---
 
-# Stack Tecnológica
+# Technology Stack
 
-## Backend
+## Currently Used
+
+### Backend
 
 - Java 21
 - Spring Boot
@@ -45,138 +48,133 @@ O foco principal é desenvolver uma aplicação incremental e explicável tecnic
 - Spring Data JPA
 - Hibernate
 
-## Frontend
+### Frontend
 
 - React
 - Vite
 - JavaScript
 - Fetch API
 
-## Banco de Dados
+### Database
 
 - PostgreSQL
 
-## Microsserviços e Infraestrutura
+### Infrastructure
 
 - RabbitMQ
-- Spring Cloud Gateway
 - Docker
 - Docker Compose
 
-## Testes
+### Testing
 
 - JUnit
 - Mockito
 
-## Documentação
+## Planned
 
+- Spring Cloud Gateway
 - OpenAPI / Swagger
-
-## DevOps
-
 - GitHub Actions
 
 ---
 
-# Arquitetura do Projeto
+# Project Architecture
 
-O sistema está sendo desenvolvido utilizando arquitetura de microsserviços, onde cada domínio possui responsabilidade própria e independência estrutural.
+The system is being developed with a microservices architecture in which each domain has its own responsibility and structural independence.
 
-## Microsserviços previstos
+## Planned Microservices
 
-| Serviço | Responsabilidade |
+| Service | Responsibility |
 |---|---|
-| student-service | Gestão de alunos |
-| classroom-service | Gestão de turmas e matrículas |
-| activity-service | Gestão de atividades |
-| grade-service | Gestão de notas e médias |
-| notification-service | Consumo de eventos e notificações |
-| api-gateway | Gateway centralizado da aplicação |
+| `student-service` | Student management |
+| `classroom-service` | Classroom and enrollment management |
+| `activity-service` | Activity management |
+| `grade-service` | Grade and average management |
+| `notification-service` | Event consumption and notifications |
+| `api-gateway` | Centralized application gateway |
 
 ---
 
-# Estrutura Atual do Projeto
+# Current Project Structure
 
 ```text
 edutrack-microservices/
-├── frontend/
-├── student-service/
-├── classroom-service/
-├── activity-service/
-├── grade-service/
-├── notification-service/
-├── api-gateway/
-├── screenshot/
-├── docs/
-├── docker-compose.yml
-└── README.md
-````
+|-- frontend/
+|-- student-service/
+|-- classroom-service/
+|-- activity-service/
+|-- grade-service/
+|-- notification-service/
+|-- api-gateway/
+|-- screenshot/
+|-- docs/
+|-- docker-compose.yml
+`-- README.md
+```
+
+At this stage, `student-service` and the frontend contain application code. The other service directories are placeholders for future sprints.
 
 ---
 
-# Status Atual do Desenvolvimento
+# Current Development Status
 
-Atualmente o projeto possui:
+The project currently includes:
 
-* `student-service` funcional
-* Frontend inicial integrado
-* Endpoints REST básicos
-* Validação de entrada
-* Tratamento global de erros
-* Testes unitários básicos
-* Integração frontend/backend
+- A functional `student-service`
+- An initial integrated frontend
+- Basic REST endpoints
+- Input validation
+- Global validation error handling
+- Basic unit tests
+- Frontend and backend integration
+- PostgreSQL persistence
 
 ---
 
-# Funcionalidades já implementadas
+# Implemented Features
 
 ## Backend
 
-* Estrutura Spring Boot
-* Controller Layer
-* Service Layer
-* DTO Layer
-* Injeção de Dependência
-* Bean Validation
-* Tratamento global de exceções
-* Serialização JSON
-* Testes unitários do Service Layer
-* Persistência com PostgreSQL
-* Repository Layer com Spring Data JPA
-* Consultas com Query Methods
+- Spring Boot structure
+- Controller layer
+- Service layer
+- DTO layer
+- Dependency injection
+- Bean Validation
+- Global validation exception handling
+- JSON serialization
+- Service layer unit tests
+- PostgreSQL persistence
+- Repository layer with Spring Data JPA
+- Queries with Spring Data query methods
 
 ## Frontend
 
-* Dashboard inicial
-* Listagem de alunos
-* Cadastro de aluno
-* Busca por nome
-* Integração com API Spring Boot
-* Recarregamento da lista
-* Tratamento básico de erro
+- Initial dashboard
+- Student listing
+- Student registration
+- Search by name
+- Spring Boot API integration
+- List reload
+- Basic validation error handling
 
 ---
 
-# Endpoints já implementados
+# Implemented Endpoints
 
-## Listar alunos
+## List Students
 
 ```http
 GET /students
 ```
-## Atualizar aluno
 
-```http
-PUT /students/{id}
-```
-
-### Exemplo de resposta
+### Example Response
 
 ```json
 [
   {
     "id": 1,
-    "name": "João"
+    "name": "Joao"
   },
   {
     "id": 2,
@@ -185,34 +183,34 @@ PUT /students/{id}
 ]
 ```
 
-## Buscar aluno por ID
+## Get Student by ID
 
 ```http
 GET /students/{id}
 ```
 
-### Exemplo
+### Example Request
 
 ```http
 GET /students/1
 ```
 
-### Resposta
+### Example Response
 
 ```json
 {
   "id": 1,
-  "name": "João"
+  "name": "Joao"
 }
 ```
 
-## Buscar aluno por nome
+## Search Students by Name
 
 ```http
 GET /students/search?name=Ana
 ```
 
-### Resposta
+### Example Response
 
 ```json
 [
@@ -223,13 +221,13 @@ GET /students/search?name=Ana
 ]
 ```
 
-## Criar aluno
+## Create Student
 
 ```http
 POST /students
 ```
 
-### Body
+### Request Body
 
 ```json
 {
@@ -237,7 +235,7 @@ POST /students
 }
 ```
 
-### Resposta
+### Example Response
 
 ```json
 {
@@ -246,19 +244,42 @@ POST /students
 }
 ```
 
+## Update Student
+
+```http
+PUT /students/{id}
+```
+
+### Request Body
+
+```json
+{
+  "name": "Carla"
+}
+```
+
+### Example Response
+
+```json
+{
+  "id": 3,
+  "name": "Carla"
+}
+```
+
 ---
 
-# Validação e tratamento de erros
+# Validation and Error Handling
 
-O projeto já possui validação básica de entrada utilizando Bean Validation.
+The project includes basic input validation with Bean Validation.
 
-## Exemplo de requisição inválida
+## Invalid Request Example
 
 ```http
 POST /students
 ```
 
-### Body inválido
+### Invalid Request Body
 
 ```json
 {
@@ -266,83 +287,84 @@ POST /students
 }
 ```
 
-### Resposta
+### Example Response
 
 ```json
 {
   "error": "Validation failed",
   "fields": {
-    "name": "não deve estar em branco"
+    "name": "must not be blank"
   },
   "status": 400
 }
 ```
 
-O tratamento global de erros é realizado utilizando:
+Global validation error handling is implemented with:
 
-* `@RestControllerAdvice`
-* `@ExceptionHandler`
-* `MethodArgumentNotValidException`
+- `@RestControllerAdvice`
+- `@ExceptionHandler`
+- `MethodArgumentNotValidException`
+
+Resource-not-found handling is planned for Sprint 3.
 
 ---
 
 # Frontend
 
-O projeto possui um frontend inicial em React + Vite para demonstrar visualmente o consumo da API `student-service`.
+The project includes an initial React + Vite frontend that visually demonstrates consumption of the `student-service` API.
 
-## Funcionalidades do frontend
+## Frontend Features
 
-* Listagem de alunos
-* Cadastro de aluno
-* Busca por nome
-* Recarregamento da lista
-* Integração com API Spring Boot
-* Tratamento básico de erro de validação
-
----
-
-# Conceitos já implementados
-
-O projeto já demonstra:
-
-* REST APIs
-* Spring Controllers
-* Service Layer
-* DTO Pattern
-* Dependency Injection
-* Inversion of Control
-* JSON Serialization
-* Bean Validation
-* Global Exception Handling
-* Path Variables
-* Query Parameters
-* Request Body
-* Arquitetura em camadas
-* Programação Orientada a Objetos
-* Docker Compose inicial
-* Unit Testing com JUnit
-* Integração frontend/backend
-* React consumindo API Java
-* JPA Entity Mapping
-* Repository Pattern
-* Spring Data JPA Query Methods
-* Persistência real com PostgreSQL
+- Student listing
+- Student registration
+- Search by name
+- List reload
+- Spring Boot API integration
+- Basic validation error handling
 
 ---
 
-# Testes implementados
+# Implemented Concepts
 
-Atualmente o projeto possui testes unitários básicos do `StudentService`.
+The project already demonstrates:
 
-## Testes existentes
+- REST APIs
+- Spring controllers
+- Service layer
+- DTO pattern
+- Dependency injection
+- Inversion of control
+- JSON serialization
+- Bean Validation
+- Global validation exception handling
+- Path variables
+- Query parameters
+- Request bodies
+- Layered architecture
+- Object-oriented programming
+- Initial Docker Compose setup
+- Unit testing with JUnit and Mockito
+- Frontend and backend integration
+- React consuming a Java API
+- JPA entity mapping
+- Repository pattern
+- Spring Data JPA query methods
+- PostgreSQL persistence
 
-* `shouldReturnAllStudents`
-* `shouldReturnStudentById`
-* `shouldSearchStudentByName`
-* `shouldCreateStudent`
-* `shouldUpdateStudent`
+---
 
-## Executar testes
+# Implemented Tests
+
+The project currently includes basic unit tests for `StudentService`.
+
+## Existing Tests
+
+- `shouldReturnAllStudents`
+- `shouldReturnStudentById`
+- `shouldSearchStudentByName`
+- `shouldCreateStudent`
+
+## Run Tests
 
 ```bash
 cd student-service
@@ -351,109 +373,109 @@ cd student-service
 
 ---
 
-# Roadmap Técnico
+# Technical Roadmap
 
-## Sprint 1 — student-service
+## Sprint 1 - `student-service`
 
-* [x] Estrutura Spring Boot
-* [x] Endpoints REST
-* [x] Model `Student`
-* [x] Service Layer
-* [x] DTOs
-* [x] Validação
-* [x] Tratamento global de exceções
-* [x] Testes unitários básicos
-* [x] Frontend inicial React
-* [x] Integração com PostgreSQL
+- [x] Spring Boot structure
+- [x] REST endpoints
+- [x] `Student` model
+- [x] Service layer
+- [x] DTOs
+- [x] Validation
+- [x] Global validation exception handling
+- [x] Basic unit tests
+- [x] Initial React frontend
+- [x] PostgreSQL integration
 
-## Sprint 2 — Persistência com PostgreSQL
+## Sprint 2 - PostgreSQL Persistence
 
-* [x] Configuração do PostgreSQL
-* [x] Spring Data JPA
-* [x] Hibernate
-* [x] Entity `Student`
-* [x] Repository Layer
-* [x] Consulta por nome com Query Method 
-* [x] Persistência real no banco
+- [x] PostgreSQL configuration
+- [x] Spring Data JPA
+- [x] Hibernate
+- [x] `Student` entity
+- [x] Repository layer
+- [x] Search by name with a query method
+- [x] Database persistence
 
+## Sprint 3 - Complete Student Service CRUD
 
-## Sprint 3 — CRUD Completo do Student Service
+- [x] `GET /students`
+- [x] `GET /students/{id}`
+- [x] `GET /students/search?name={name}`
+- [x] `POST /students`
+- [x] `PUT /students/{id}`
+- [ ] `DELETE /students/{id}`
+- [ ] Resource-not-found handling
+- [ ] Update tests
+- [ ] Delete tests
+- [ ] OpenAPI / Swagger
 
-* [x] GET /students
-* [x] GET /students/{id}
-* [x] POST /students
-* [x] PUT /students/{id}
-* [ ] DELETE /students/{id}
-* [ ] Tratamento 404
-* [ ] Testes de atualização
-* [ ] Testes de remoção
-* [ ] Swagger/OpenAPI
+## Sprint 4 - `classroom-service`
 
-## Sprint 4 — classroom-service
+- [ ] Classroom CRUD
+- [ ] Enrollments
+- [ ] Student and classroom relationship
 
-* [ ] CRUD de turmas
-* [ ] Matrículas
-* [ ] Relacionamento aluno/turma
+## Sprint 5 - `activity-service`
 
-## Sprint 5 — activity-service
+- [ ] Activity registration
+- [ ] Activity types
+- [ ] Classroom integration
 
-* [ ] Cadastro de atividades
-* [ ] Tipos de atividade
-* [ ] Integração com turmas
+## Sprint 6 - `grade-service`
 
-## Sprint 6 — grade-service
+- [ ] Grade registration
+- [ ] Average calculation
+- [ ] Academic history
 
-* [ ] Lançamento de notas
-* [ ] Cálculo de médias
-* [ ] Histórico acadêmico
+## Sprint 7 - RabbitMQ
 
-## Sprint 7 — RabbitMQ
+- [ ] Events between services
+- [ ] Message publishing and consumption
 
-* [ ] Eventos entre serviços
-* [ ] Publicação e consumo de mensagens
+## Sprint 8 - `notification-service`
 
-## Sprint 8 — notification-service
+- [ ] Event consumption
+- [ ] Notification simulation
 
-* [ ] Consumo de eventos
-* [ ] Simulação de notificações
+## Sprint 9 - API Gateway
 
-## Sprint 9 — API Gateway
+- [ ] Centralized gateway
+- [ ] Service routing
 
-* [ ] Gateway centralizado
-* [ ] Roteamento de serviços
+## Sprint 10 - Quality and DevOps
 
-## Sprint 10 — Qualidade e DevOps
-
-* [ ] GitHub Actions
-* [ ] Dockerização completa
-* [ ] Swagger/OpenAPI
-* [ ] Testes de integração
-* [ ] README final
+- [ ] GitHub Actions
+- [ ] Complete Dockerization
+- [ ] OpenAPI / Swagger
+- [ ] Integration tests
+- [ ] Final README
 
 ---
 
-# Como executar o projeto
+# Running the Project
 
-## Subir infraestrutura local
+## Start the Local Infrastructure
 
 ```bash
 docker compose up -d
 ```
 
-## Executar backend
+## Run the Backend
 
 ```bash
 cd student-service
 ./mvnw spring-boot:run
 ```
 
-Backend disponível em:
+The backend is available at:
 
 ```text
 http://localhost:8081
 ```
 
-## Executar frontend
+## Run the Frontend
 
 ```bash
 cd frontend
@@ -461,7 +483,7 @@ npm install
 npm run dev
 ```
 
-Frontend disponível em:
+The frontend is available at:
 
 ```text
 http://localhost:5173
@@ -469,21 +491,23 @@ http://localhost:5173
 
 ---
 
-# Serviços locais disponíveis
+# Available Local Services
 
 ## RabbitMQ
+
+Management interface:
 
 ```text
 http://localhost:15672
 ```
 
-Usuário:
+Username:
 
 ```text
 guest
 ```
 
-Senha:
+Password:
 
 ```text
 guest
@@ -491,67 +515,44 @@ guest
 
 ## PostgreSQL
 
-| Serviço      | Porta |
-| ------------ | ----- |
-| student-db   | 5433  |
-| classroom-db | 5434  |
-| activity-db  | 5435  |
-| grade-db     | 5436  |
+| Service | Port |
+|---|---|
+| `student-db` | `5433` |
+| `classroom-db` | `5434` |
+| `activity-db` | `5435` |
+| `grade-db` | `5436` |
 
 ---
 
-# Objetivos de aprendizado do projeto
+# Learning Goals
 
-Este projeto está sendo utilizado para consolidar conhecimentos em:
+This project is being used to consolidate knowledge of:
 
-* Java moderno
-* Spring Boot
-* Microsserviços
-* APIs REST
-* React
-* Integração frontend/backend
-* DTO Pattern
-* Bean Validation
-* Testes automatizados
-* Tratamento global de exceções
-* Docker
-* PostgreSQL
-* RabbitMQ
-* Arquitetura backend
-* Boas práticas de engenharia de software
-* DevOps básico
+- Modern Java
+- Spring Boot
+- Microservices
+- REST APIs
+- React
+- Frontend and backend integration
+- DTO pattern
+- Bean Validation
+- Automated tests
+- Global exception handling
+- Docker
+- PostgreSQL
+- RabbitMQ
+- Backend architecture
+- Software engineering best practices
+- Basic DevOps
 
 ---
 
-# Observações
+# Notes
 
-Atualmente o student-service utiliza persistência real com PostgreSQL. Os demais microsserviços ainda serão implementados nas próximas sprints.
+The `student-service` currently uses PostgreSQL persistence. The other microservices will be implemented in future sprints.
 
-## Persistência de dados
+## Data Persistence
 
-O projeto utiliza PostgreSQL com Spring Data JPA e Hibernate para persistência dos dados.
+The project uses PostgreSQL with Spring Data JPA and Hibernate for data persistence.
 
-Mais detalhes em:
-
-- `docs/persistence.md`
-
-```
-```
-
-# Latest Progress
-
-### Sprint 2 Completed
-
-- PostgreSQL configured
-- Spring Data JPA integrated
-- Hibernate configured
-- Student persistence implemented
-- Repository Pattern implemented
-- Query Methods implemented
-
-### Sprint 3 In Progress
-
-- Student update endpoint (PUT)
-- CRUD completion
-- Error handling improvements
-
+For more details, see [`docs/persistence.md`](docs/persistence.md).
