@@ -106,7 +106,7 @@ edutrack-microservices/
 ├── grade-service/
 ├── notification-service/
 ├── api-gateway/
-├── screenshots/
+├── screenshot/
 ├── docs/
 ├── docker-compose.yml
 └── README.md
@@ -377,40 +377,52 @@ cd student-service
 * [x] Persistência real no banco
 
 
-## Sprint 3 — classroom-service
+## Sprint 3 — CRUD Completo do Student Service
+
+* [x] GET /students
+* [x] GET /students/{id}
+* [x] POST /students
+* [x] PUT /students/{id}
+* [ ] DELETE /students/{id}
+* [ ] Tratamento 404
+* [ ] Testes de atualização
+* [ ] Testes de remoção
+* [ ] Swagger/OpenAPI
+
+## Sprint 4 — classroom-service
 
 * [ ] CRUD de turmas
 * [ ] Matrículas
 * [ ] Relacionamento aluno/turma
 
-## Sprint 4 — activity-service
+## Sprint 5 — activity-service
 
 * [ ] Cadastro de atividades
 * [ ] Tipos de atividade
 * [ ] Integração com turmas
 
-## Sprint 5 — grade-service
+## Sprint 6 — grade-service
 
 * [ ] Lançamento de notas
 * [ ] Cálculo de médias
 * [ ] Histórico acadêmico
 
-## Sprint 6 — RabbitMQ
+## Sprint 7 — RabbitMQ
 
 * [ ] Eventos entre serviços
 * [ ] Publicação e consumo de mensagens
 
-## Sprint 7 — notification-service
+## Sprint 8 — notification-service
 
 * [ ] Consumo de eventos
 * [ ] Simulação de notificações
 
-## Sprint 8 — API Gateway
+## Sprint 9 — API Gateway
 
 * [ ] Gateway centralizado
 * [ ] Roteamento de serviços
 
-## Sprint 9 — Qualidade e DevOps
+## Sprint 10 — Qualidade e DevOps
 
 * [ ] GitHub Actions
 * [ ] Dockerização completa
@@ -525,3 +537,21 @@ Mais detalhes em:
 
 ```
 ```
+
+# Latest Progress
+
+### Sprint 2 Completed
+
+- PostgreSQL configured
+- Spring Data JPA integrated
+- Hibernate configured
+- Student persistence implemented
+- Repository Pattern implemented
+- Query Methods implemented
+
+### Sprint 3 In Progress
+
+- Student update endpoint (PUT)
+- CRUD completion
+- Error handling improvements
+
