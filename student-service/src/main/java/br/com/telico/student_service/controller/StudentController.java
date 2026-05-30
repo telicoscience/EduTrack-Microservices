@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import br.com.telico.student_service.dto.CreateStudentRequest;
 import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 
 @RestController
 @RequestMapping("/students")
@@ -51,5 +52,10 @@ public class StudentController {
     public Student update(@PathVariable Long id, @Valid @RequestBody CreateStudentRequest request) {
         return studentService.update(id, request.getName());
         
+    }
+
+    @DeleteMapping("/{id}")
+    public void delete(@PathVariable Long id) {
+        studentService.delete(id);
     }
 }

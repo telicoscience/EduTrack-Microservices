@@ -47,4 +47,8 @@ public class StudentService {
         student.setName(name);
         return studentRepository.save(student);
     }
+
+    public void delete(Long id) {
+        studentRepository.deleteById(id);
+    }
 }

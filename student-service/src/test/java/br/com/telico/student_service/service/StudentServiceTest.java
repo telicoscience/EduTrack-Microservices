@@ -50,6 +50,10 @@ public class StudentServiceTest {
         StudentRepository repository = Mockito.mock(StudentRepository.class);
         StudentService service = new StudentService(repository);
 
+        when(repository.findByNameContainingIgnoreCase("Ana")).thenReturn(List.of(
+            new Student(1L, "Ana")
+        ));
+
         List<Student> students = service.searchByName("Ana");
 
         assertEquals(1, students.size());
@@ -69,5 +73,20 @@ public class StudentServiceTest {
 
         assertEquals(3L, student.getId());
         assertEquals("Carlos", student.getName());
+    }
+
+    @Test
+    void shouldUpdateStudent() {
+        StudentRepository repository = Mockito.mock(StudentRepository.class);
+        StudentService service = new StudentService(repository);
+        Student existingStudent = new Student(3L, "Carlos");
+
+        when(repository.findById(3L)).thenReturn(Optional.of(existingStudent));
+        when(repository.save(existingStudent)).thenReturn(existingStudent);
+
+        Student student = service.update(3L, "Carla");
+
+        assertEquals(3L, student.getId());
+        assertEquals("Carla", student.getName());
     }
 }
