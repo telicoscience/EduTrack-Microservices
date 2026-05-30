@@ -54,6 +54,7 @@ The main goal is to build an incremental application that can be clearly explain
 - Vite
 - JavaScript
 - Fetch API
+- React Router
 
 ### Database
 
@@ -127,8 +128,8 @@ At this stage, `student-service` and the frontend contain application code. The 
 The project currently includes:
 
 - A functional `student-service`
-- An initial integrated frontend
-- Basic REST endpoints
+- A routed frontend integrated with `student-service`
+- Student CRUD endpoints
 - Input validation
 - Global validation error handling
 - Basic unit tests
@@ -155,16 +156,20 @@ The project currently includes:
 - PostgreSQL persistence
 - Repository layer with Spring Data JPA
 - Queries with Spring Data query methods
+- Extended student profile with registration, academic, and guardian data
+- Full student data mapping for create and update requests
+- Student deletion endpoint
 
 ## Frontend
 
-- Initial dashboard
-- Student listing
-- Student registration
-- Search by name
+- Dashboard with total student count and API availability status
+- Navigation with React Router
+- Student listing in a table
+- Student details page
+- Dedicated search-by-name page
 - Spring Boot API integration
-- List reload
-- Basic validation error handling
+- Basic API error handling
+- Scaffold pages for student creation and API status
 
 ---
 
@@ -250,7 +255,16 @@ POST /students
 
 ```json
 {
-  "name": "Carlos"
+  "name": "Carlos",
+  "cpf": "12345678900",
+  "registration": "2026-001",
+  "grade": "8th Grade",
+  "classGroup": "A",
+  "shift": "Morning",
+  "status": "Active",
+  "guardianName": "Maria Silva",
+  "averageScore": 8.7,
+  "attendanceRate": 96.5
 }
 ```
 
@@ -259,7 +273,16 @@ POST /students
 ```json
 {
   "id": 3,
-  "name": "Carlos"
+  "name": "Carlos",
+  "cpf": "12345678900",
+  "registration": "2026-001",
+  "grade": "8th Grade",
+  "classGroup": "A",
+  "shift": "Morning",
+  "status": "Active",
+  "guardianName": "Maria Silva",
+  "averageScore": 8.7,
+  "attendanceRate": 96.5
 }
 ```
 
@@ -273,7 +296,16 @@ PUT /students/{id}
 
 ```json
 {
-  "name": "Carla"
+  "name": "Carla",
+  "cpf": "12345678900",
+  "registration": "2026-001",
+  "grade": "8th Grade",
+  "classGroup": "A",
+  "shift": "Morning",
+  "status": "Active",
+  "guardianName": "Maria Silva",
+  "averageScore": 9.1,
+  "attendanceRate": 97.0
 }
 ```
 
@@ -282,8 +314,23 @@ PUT /students/{id}
 ```json
 {
   "id": 3,
-  "name": "Carla"
+  "name": "Carla",
+  "cpf": "12345678900",
+  "registration": "2026-001",
+  "grade": "8th Grade",
+  "classGroup": "A",
+  "shift": "Morning",
+  "status": "Active",
+  "guardianName": "Maria Silva",
+  "averageScore": 9.1,
+  "attendanceRate": 97.0
 }
+```
+
+## Delete Student
+
+```http
+DELETE /students/{id}
 ```
 
 ---
@@ -324,7 +371,7 @@ Global validation error handling is implemented with:
 - `@ExceptionHandler`
 - `MethodArgumentNotValidException`
 
-Resource-not-found handling is planned for Sprint 3.
+Missing students requested through `GET /students/{id}` or `PUT /students/{id}` return an HTTP `404 Not Found` response.
 
 ---
 
@@ -334,12 +381,14 @@ The project includes an initial React + Vite frontend that visually demonstrates
 
 ## Frontend Features
 
-- Student listing
-- Student registration
-- Search by name
-- List reload
+- Dashboard with student count and API availability status
+- Navigation with React Router
+- Student listing in a table
+- Student details page
+- Dedicated search-by-name page
 - Spring Boot API integration
-- Basic validation error handling
+- Basic API error handling
+- Scaffold pages for student creation and API status
 
 ---
 
@@ -368,6 +417,7 @@ The project already demonstrates:
 - Unit testing with JUnit and Mockito
 - Frontend and backend integration
 - React consuming a Java API
+- Client-side routing with React Router
 - JPA entity mapping
 - Repository pattern
 - Spring Data JPA query methods
@@ -428,7 +478,7 @@ cd student-service
 - [x] `GET /students/search?name={name}`
 - [x] `POST /students`
 - [x] `PUT /students/{id}`
-- [ ] `DELETE /students/{id}`
+- [x] `DELETE /students/{id}`
 - [x] 404 Not Found handling
 - [x] Update tests
 - [ ] Delete tests
