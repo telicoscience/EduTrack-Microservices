@@ -34,4 +34,17 @@ public class StudentService {
     public List<Student> searchByName(String name) {
         return studentRepository.findByNameContainingIgnoreCase(name);
     }
+
+
+
+    public Student update(Long id, String name) {
+        Student student = studentRepository.findById(id).orElse(null);
+
+        if (student == null) {
+            return null;
+        }
+
+        student.setName(name);
+        return studentRepository.save(student);
+    }
 }

@@ -164,6 +164,11 @@ Atualmente o projeto possui:
 ```http
 GET /students
 ```
+## Atualizar aluno
+
+```http
+PUT /students/{id}
+```
 
 ### Exemplo de resposta
 
@@ -335,6 +340,7 @@ Atualmente o projeto possui testes unitários básicos do `StudentService`.
 * `shouldReturnStudentById`
 * `shouldSearchStudentByName`
 * `shouldCreateStudent`
+* `shouldUpdateStudent`
 
 ## Executar testes
 
@@ -358,7 +364,7 @@ cd student-service
 * [x] Tratamento global de exceções
 * [x] Testes unitários básicos
 * [x] Frontend inicial React
-* [ ] Integração com PostgreSQL
+* [x] Integração com PostgreSQL
 
 ## Sprint 2 — Persistência com PostgreSQL
 
@@ -368,6 +374,7 @@ cd student-service
 * [x] Entity `Student`
 * [x] Repository Layer
 * [x] Consulta por nome com Query Method 
+* [x] Persistência real no banco
 
 
 ## Sprint 3 — classroom-service
@@ -506,7 +513,7 @@ Este projeto está sendo utilizado para consolidar conhecimentos em:
 
 # Observações
 
-O projeto ainda está em desenvolvimento e parte da lógica atual utiliza dados simulados em memória para fins de aprendizado incremental e construção gradual da arquitetura.
+Atualmente o student-service utiliza persistência real com PostgreSQL. Os demais microsserviços ainda serão implementados nas próximas sprints.
 
 ## Persistência de dados
 

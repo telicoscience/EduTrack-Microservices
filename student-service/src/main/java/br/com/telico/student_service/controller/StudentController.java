@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -42,7 +43,13 @@ public class StudentController {
 
     @PostMapping
     public Student create(@Valid @RequestBody CreateStudentRequest request) {
-        String name = request.getName().toString();
+        String name = request.getName();
         return studentService.create(name);
+    }
+
+    @PutMapping("/{id}")
+    public Student update(@PathVariable Long id, @Valid @RequestBody CreateStudentRequest request) {
+        return studentService.update(id, request.getName());
+        
     }
 }
