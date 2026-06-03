@@ -150,7 +150,7 @@ The project currently includes:
 - Bean Validation
 - Global validation exception handling
 - Custom exception handling for student not found cases
-- HTTP 404 response for missing students
+- Missing students requested through GET, PUT or DELETE operations return an HTTP 404 Not Found response.
 - JSON serialization
 - Service layer unit tests
 - PostgreSQL persistence
@@ -436,6 +436,8 @@ The project currently includes basic unit tests for `StudentService`.
 - `shouldSearchStudentByName`
 - `shouldCreateStudent`
 - `shouldUpdateStudent`
+- `shouldDeleteStudent`
+- `shouldThrowStudentNotFoundExceptionWhenDeletingMissingStudent`
 
 ## Run Tests
 
@@ -481,7 +483,7 @@ cd student-service
 - [x] `DELETE /students/{id}`
 - [x] 404 Not Found handling
 - [x] Update tests
-- [ ] Delete tests
+- [x] Delete tests
 - [ ] OpenAPI / Swagger
 
 ## Sprint 4 - `classroom-service`
@@ -521,7 +523,6 @@ cd student-service
 
 - [ ] GitHub Actions
 - [ ] Complete Dockerization
-- [ ] OpenAPI / Swagger
 - [ ] Integration tests
 - [ ] Final README
 
