@@ -1,7 +1,9 @@
 package br.com.telico.student_service.service;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.verify;
 
 import java.util.List;
 import java.util.Optional;
@@ -12,6 +14,7 @@ import org.mockito.Mockito;
 import br.com.telico.student_service.model.Student;
 import br.com.telico.student_service.repository.StudentRepository;
 import br.com.telico.student_service.dto.CreateStudentRequest;
+import br.com.telico.student_service.exception.StudentNotFoundException;
 
 public class StudentServiceTest {
 
@@ -110,7 +113,26 @@ public class StudentServiceTest {
 
     @Test
     void shouldDeleteStudent() {
+        StudentRepository repositoty = Mockito.mock(StudentRepository.class);
+        StudentService service = new StudentService(repositoty);
+
+        Student existingStudent = new Student(1L, "José");
         
+        when(repositoty.findById(1L)).thenReturn(Optional.of(existingStudent));
+
+        service.delete(1L);
+        verify(repositoty).delete(existingStudent);       
+    }
+
+    @Test
+    void shouldThrowStudentNotFoundExceptionWhenDeletingMissingStudent() {
+        StudentRepository repository = Mockito.mock(StudentRepository.class);
+        StudentService service = new StudentService(repository);
+
+        when(repository.findById(999L)).thenReturn(Optional.empty());
+
+        assertThrows(StudentNotFoundException.class, () -> service.delete(999L));
+
     }
 
     private CreateStudentRequest createRequest(String name) {
