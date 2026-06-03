@@ -47,6 +47,8 @@ The main goal is to build an incremental application that can be clearly explain
 - Spring Web
 - Spring Data JPA
 - Hibernate
+- OpenAPI
+- Swagger UI
 
 ### Frontend
 
@@ -78,7 +80,6 @@ The main goal is to build an incremental application that can be clearly explain
 
 - RabbitMQ messaging integration
 - Spring Cloud Gateway
-- OpenAPI / Swagger
 - GitHub Actions
 
 ---
@@ -159,6 +160,8 @@ The project currently includes:
 - Extended student profile with registration, academic, and guardian data
 - Full student data mapping for create and update requests
 - Student deletion endpoint
+- OpenAPI documentation
+- Interactive Swagger UI
 
 ## Frontend
 
@@ -422,6 +425,9 @@ The project already demonstrates:
 - Repository pattern
 - Spring Data JPA query methods
 - PostgreSQL persistence
+- API documentation
+- OpenAPI specification
+- Swagger UI
 
 ---
 
@@ -484,7 +490,7 @@ cd student-service
 - [x] 404 Not Found handling
 - [x] Update tests
 - [x] Delete tests
-- [ ] OpenAPI / Swagger
+- [x] OpenAPI / Swagger
 
 ## Sprint 4 - `classroom-service`
 
