@@ -536,6 +536,16 @@ cd student-service
 
 # Running the Project
 
+## Configure Local Environment
+
+Copy the example environment file before starting Docker Compose:
+
+```bash
+cp .env.example .env
+```
+
+Update `.env` with your local credentials as needed. Real credentials should never be committed to the repository.
+
 ## Start the Local Infrastructure
 
 ```bash
@@ -584,13 +594,13 @@ http://localhost:15672
 Username:
 
 ```text
-guest
+Configured by `RABBITMQ_USER` in `.env`
 ```
 
 Password:
 
 ```text
-guest
+Configured by `RABBITMQ_PASSWORD` in `.env`
 ```
 
 ## PostgreSQL
