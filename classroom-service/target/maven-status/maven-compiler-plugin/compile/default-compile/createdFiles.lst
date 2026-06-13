@@ -1,1 +1,6 @@
+br/com/telico/classroom_service/repository/ClassroomRepository.class
+br/com/telico/classroom_service/controller/ClassroomController.class
+br/com/telico/classroom_service/service/ClassroomService.class
+br/com/telico/classroom_service/dto/CreateClassroomRequest.class
+br/com/telico/classroom_service/model/Classroom.class
 br/com/telico/classroom_service/ClassroomServiceApplication.class

@@ -4,10 +4,15 @@ import java.util.List;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.com.telico.classroom_service.dto.CreateClassroomRequest;
 import br.com.telico.classroom_service.model.Classroom;
 import br.com.telico.classroom_service.service.ClassroomService;
+import jakarta.validation.Valid;
 
 @RestController
 public class ClassroomController {
@@ -25,5 +30,18 @@ public class ClassroomController {
     @GetMapping("/classrooms/{id}")
     public Classroom findById(@PathVariable Long id) {
         return classroomService.findById(id);
+    }
+
+    @PostMapping("/classrooms")
+    public Classroom create(@RequestBody CreateClassroomRequest request) {
+        return classroomService.create(request);
+    }
+
+    @PutMapping("/classrooms/{id}")
+    public Classroom update(
+            @PathVariable Long id,
+            @Valid @RequestBody CreateClassroomRequest request
+    ) {
+        return classroomService.update(id, request);
     }
 }
