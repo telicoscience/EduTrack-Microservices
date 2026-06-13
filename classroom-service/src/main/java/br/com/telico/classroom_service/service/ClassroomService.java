@@ -16,5 +16,9 @@ public class ClassroomService {
     public List<Classroom> findAll() {
         return classroomRepository.findAll();
     }
+
+    public Classroom findById(Long id) {
+        return classroomRepository.findById(id).orElse(null);
+    }
     
 }
