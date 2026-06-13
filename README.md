@@ -163,6 +163,13 @@ The project currently includes:
 - OpenAPI documentation
 - Interactive Swagger UI
 
+### Classroom Service
+
+- Initial `classroom-service` module
+- Classroom entity mapped with JPA
+- Repository layer with Spring Data JPA
+- First endpoint: `GET /classrooms`
+
 ## Frontend
 
 - Dashboard with total student count and API availability status
@@ -493,11 +500,21 @@ cd student-service
 - [x] OpenAPI / Swagger
 
 ## Sprint 4 - `classroom-service`
+## Sprint 4 - `classroom-service`
 
-- [ ] Classroom CRUD
-- [ ] Enrollments
-- [ ] Student and classroom relationship
-
+- [x] Initial Spring Boot module setup
+- [x] Classroom entity
+- [x] Classroom repository
+- [x] Classroom service layer
+- [x] Classroom controller
+- [x] `GET /classrooms`
+- [ ] `GET /classrooms/{id}`
+- [ ] `POST /classrooms`
+- [ ] `PUT /classrooms/{id}`
+- [ ] `DELETE /classrooms/{id}`
+- [ ] Classroom validation
+- [ ] Classroom 404 handling
+- [ ] Classroom tests
 ## Sprint 5 - `activity-service`
 
 - [ ] Activity registration
