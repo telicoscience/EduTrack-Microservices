@@ -1,1 +1,5 @@
 /home/telico/EduTrack-Microservices/classroom-service/src/main/java/br/com/telico/classroom_service/ClassroomServiceApplication.java
+/home/telico/EduTrack-Microservices/classroom-service/src/main/java/br/com/telico/classroom_service/controller/ClassroomController.java
+/home/telico/EduTrack-Microservices/classroom-service/src/main/java/br/com/telico/classroom_service/model/Classroom.java
+/home/telico/EduTrack-Microservices/classroom-service/src/main/java/br/com/telico/classroom_service/repository/ClassroomRepository.java
+/home/telico/EduTrack-Microservices/classroom-service/src/main/java/br/com/telico/classroom_service/service/ClassroomService.java
