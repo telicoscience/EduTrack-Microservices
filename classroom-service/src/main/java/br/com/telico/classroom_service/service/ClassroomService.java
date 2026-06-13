@@ -50,5 +50,9 @@ public class ClassroomService {
 
         return classroomRepository.save(classroom);
     }
+
+    public void delete(Long id) {
+        classroomRepository.deleteById(id);
+    }
     
 }

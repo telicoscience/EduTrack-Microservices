@@ -129,8 +129,10 @@ At this stage, `student-service` and the frontend contain application code. The 
 The project currently includes:
 
 - A functional `student-service`
+- A functional `classroom-service` with basic CRUD
 - A routed frontend integrated with `student-service`
 - Student CRUD endpoints
+- Classroom CRUD endpoints
 - Input validation
 - Global validation error handling
 - Basic unit tests
@@ -168,7 +170,9 @@ The project currently includes:
 - Initial `classroom-service` module
 - Classroom entity mapped with JPA
 - Repository layer with Spring Data JPA
-- First endpoint: `GET /classrooms`
+- Service layer for classroom operations
+- Controller layer for classroom REST endpoints
+- Full classroom CRUD endpoints
 
 ## Frontend
 
@@ -343,6 +347,120 @@ PUT /students/{id}
 DELETE /students/{id}
 ```
 
+## List Classrooms
+
+```http
+GET /classrooms
+```
+
+### Example Response
+
+```json
+[
+  {
+    "id": 1,
+    "name": "A",
+    "grade": "8th Grade",
+    "schoolYear": 2026,
+    "shift": "Morning",
+    "capacity": 30
+  }
+]
+```
+
+## Get Classroom by ID
+
+```http
+GET /classrooms/{id}
+```
+
+### Example Request
+
+```http
+GET /classrooms/1
+```
+
+### Example Response
+
+```json
+{
+  "id": 1,
+  "name": "A",
+  "grade": "8th Grade",
+  "schoolYear": 2026,
+  "shift": "Morning",
+  "capacity": 30
+}
+```
+
+## Create Classroom
+
+```http
+POST /classrooms
+```
+
+### Request Body
+
+```json
+{
+  "name": "A",
+  "grade": "8th Grade",
+  "schoolYear": 2026,
+  "shift": "Morning",
+  "capacity": 30
+}
+```
+
+### Example Response
+
+```json
+{
+  "id": 1,
+  "name": "A",
+  "grade": "8th Grade",
+  "schoolYear": 2026,
+  "shift": "Morning",
+  "capacity": 30
+}
+```
+
+## Update Classroom
+
+```http
+PUT /classrooms/{id}
+```
+
+### Request Body
+
+```json
+{
+  "name": "B",
+  "grade": "8th Grade",
+  "schoolYear": 2026,
+  "shift": "Afternoon",
+  "capacity": 28
+}
+```
+
+### Example Response
+
+```json
+{
+  "id": 1,
+  "name": "B",
+  "grade": "8th Grade",
+  "schoolYear": 2026,
+  "shift": "Afternoon",
+  "capacity": 28
+}
+```
+
+## Delete Classroom
+
+```http
+DELETE /classrooms/{id}
+```
+
 ---
 
 # Validation and Error Handling
@@ -500,7 +618,6 @@ cd student-service
 - [x] OpenAPI / Swagger
 
 ## Sprint 4 - `classroom-service`
-## Sprint 4 - `classroom-service`
 
 - [x] Initial Spring Boot module setup
 - [x] Classroom entity
@@ -508,13 +625,14 @@ cd student-service
 - [x] Classroom service layer
 - [x] Classroom controller
 - [x] `GET /classrooms`
-- [ ] `GET /classrooms/{id}`
-- [ ] `POST /classrooms`
-- [ ] `PUT /classrooms/{id}`
-- [ ] `DELETE /classrooms/{id}`
+- [x] `GET /classrooms/{id}`
+- [x] `POST /classrooms`
+- [x] `PUT /classrooms/{id}`
+- [x] `DELETE /classrooms/{id}`
 - [ ] Classroom validation
 - [ ] Classroom 404 handling
 - [ ] Classroom tests
+
 ## Sprint 5 - `activity-service`
 
 - [ ] Activity registration
@@ -569,7 +687,7 @@ Update `.env` with your local credentials as needed. Real credentials should nev
 docker compose up -d
 ```
 
-## Run the Backend
+## Run the Student Service
 
 ```bash
 cd student-service
@@ -580,6 +698,19 @@ The backend is available at:
 
 ```text
 http://localhost:8081
+```
+
+## Run the Classroom Service
+
+```bash
+cd classroom-service
+./mvnw spring-boot:run
+```
+
+The classroom service is available at:
+
+```text
+http://localhost:8082
 ```
 
 ## Run the Frontend
