@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.telico.classroom_service.dto.CreateClassroomRequest;
@@ -16,6 +17,7 @@ import br.com.telico.classroom_service.service.ClassroomService;
 import jakarta.validation.Valid;
 
 @RestController
+@RequestMapping("/classrooms")
 public class ClassroomController {
     private final ClassroomService classroomService;
 
@@ -23,22 +25,22 @@ public class ClassroomController {
         this.classroomService = classroomService;
     }
 
-    @GetMapping("/classrooms")
+    @GetMapping
     public List<Classroom> findAll() {
         return classroomService.findAll();
     }
 
-    @GetMapping("/classrooms/{id}")
+    @GetMapping("/{id}")
     public Classroom findById(@PathVariable Long id) {
         return classroomService.findById(id);
     }
 
-    @PostMapping("/classrooms")
+    @PostMapping
     public Classroom create(@Valid @RequestBody CreateClassroomRequest request) {
         return classroomService.create(request);
     }
 
-    @PutMapping("/classrooms/{id}")
+    @PutMapping("/{id}")
     public Classroom update(
             @PathVariable Long id,
             @Valid @RequestBody CreateClassroomRequest request
@@ -46,7 +48,7 @@ public class ClassroomController {
         return classroomService.update(id, request);
     }
 
-    @DeleteMapping("/classrooms/{id}")
+    @DeleteMapping("/{id}")
     public void delete(@PathVariable Long id) {
         classroomService.delete(id);
     }
