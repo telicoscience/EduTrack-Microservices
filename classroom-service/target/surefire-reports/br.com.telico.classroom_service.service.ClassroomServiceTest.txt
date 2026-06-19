@@ -1,8 +1,8 @@
 -------------------------------------------------------------------------------
 Test set: br.com.telico.classroom_service.service.ClassroomServiceTest
 -------------------------------------------------------------------------------
-Tests run: 6, Failures: 0, Errors: 6, Skipped: 0, Time elapsed: 21.80 s <<< FAILURE! -- in br.com.telico.classroom_service.service.ClassroomServiceTest
-br.com.telico.classroom_service.service.ClassroomServiceTest.shouldThrowClassroomNotFoundExceptionWhenClassroomDoesNotExist -- Time elapsed: 21.72 s <<< ERROR!
+Tests run: 6, Failures: 0, Errors: 6, Skipped: 0, Time elapsed: 25.67 s <<< FAILURE! -- in br.com.telico.classroom_service.service.ClassroomServiceTest
+br.com.telico.classroom_service.service.ClassroomServiceTest.shouldThrowClassroomNotFoundExceptionWhenClassroomDoesNotExist -- Time elapsed: 25.30 s <<< ERROR!
 java.lang.IllegalStateException: Could not initialize plugin: interface org.mockito.plugins.MockMaker (alternate: null)
 	at org.mockito.internal.configuration.plugins.PluginLoader$1.invoke(PluginLoader.java:85)
 	at jdk.proxy2/jdk.proxy2.$Proxy27.isTypeMockable(Unknown Source)
@@ -57,7 +57,7 @@ Caused by: java.lang.IllegalStateException: Could not self-attach to current VM 
 	at org.mockito.internal.creation.bytebuddy.InlineDelegateByteBuddyMockMaker.<clinit>(InlineDelegateByteBuddyMockMaker.java:138)
 	... 13 more
 
-br.com.telico.classroom_service.service.ClassroomServiceTest.shouldReturnClassroomById -- Time elapsed: 0.012 s <<< ERROR!
+br.com.telico.classroom_service.service.ClassroomServiceTest.shouldReturnClassroomById -- Time elapsed: 0.017 s <<< ERROR!
 java.lang.IllegalStateException: Could not initialize plugin: interface org.mockito.plugins.MockMaker (alternate: null)
 	at org.mockito.internal.configuration.plugins.PluginLoader$1.invoke(PluginLoader.java:85)
 	at jdk.proxy2/jdk.proxy2.$Proxy27.isTypeMockable(Unknown Source)
@@ -112,7 +112,7 @@ Caused by: java.lang.IllegalStateException: Could not self-attach to current VM 
 	at org.mockito.internal.creation.bytebuddy.InlineDelegateByteBuddyMockMaker.<clinit>(InlineDelegateByteBuddyMockMaker.java:138)
 	... 13 more
 
-br.com.telico.classroom_service.service.ClassroomServiceTest.shouldDeleteClassroom -- Time elapsed: 0.002 s <<< ERROR!
+br.com.telico.classroom_service.service.ClassroomServiceTest.shouldDeleteClassroom -- Time elapsed: 0.004 s <<< ERROR!
 java.lang.IllegalStateException: Could not initialize plugin: interface org.mockito.plugins.MockMaker (alternate: null)
 	at org.mockito.internal.configuration.plugins.PluginLoader$1.invoke(PluginLoader.java:85)
 	at jdk.proxy2/jdk.proxy2.$Proxy27.isTypeMockable(Unknown Source)
@@ -167,7 +167,7 @@ Caused by: java.lang.IllegalStateException: Could not self-attach to current VM 
 	at org.mockito.internal.creation.bytebuddy.InlineDelegateByteBuddyMockMaker.<clinit>(InlineDelegateByteBuddyMockMaker.java:138)
 	... 13 more
 
-br.com.telico.classroom_service.service.ClassroomServiceTest.shouldUpdateClassroom -- Time elapsed: 0.004 s <<< ERROR!
+br.com.telico.classroom_service.service.ClassroomServiceTest.shouldUpdateClassroom -- Time elapsed: 0.006 s <<< ERROR!
 java.lang.IllegalStateException: Could not initialize plugin: interface org.mockito.plugins.MockMaker (alternate: null)
 	at org.mockito.internal.configuration.plugins.PluginLoader$1.invoke(PluginLoader.java:85)
 	at jdk.proxy2/jdk.proxy2.$Proxy27.isTypeMockable(Unknown Source)
@@ -222,7 +222,7 @@ Caused by: java.lang.IllegalStateException: Could not self-attach to current VM 
 	at org.mockito.internal.creation.bytebuddy.InlineDelegateByteBuddyMockMaker.<clinit>(InlineDelegateByteBuddyMockMaker.java:138)
 	... 13 more
 
-br.com.telico.classroom_service.service.ClassroomServiceTest.shouldCreateClassroom -- Time elapsed: 0.004 s <<< ERROR!
+br.com.telico.classroom_service.service.ClassroomServiceTest.shouldCreateClassroom -- Time elapsed: 0.006 s <<< ERROR!
 java.lang.IllegalStateException: Could not initialize plugin: interface org.mockito.plugins.MockMaker (alternate: null)
 	at org.mockito.internal.configuration.plugins.PluginLoader$1.invoke(PluginLoader.java:85)
 	at jdk.proxy2/jdk.proxy2.$Proxy27.isTypeMockable(Unknown Source)
@@ -277,7 +277,7 @@ Caused by: java.lang.IllegalStateException: Could not self-attach to current VM 
 	at org.mockito.internal.creation.bytebuddy.InlineDelegateByteBuddyMockMaker.<clinit>(InlineDelegateByteBuddyMockMaker.java:138)
 	... 13 more
 
-br.com.telico.classroom_service.service.ClassroomServiceTest.shouldReturnAllClassrooms -- Time elapsed: 0.003 s <<< ERROR!
+br.com.telico.classroom_service.service.ClassroomServiceTest.shouldReturnAllClassrooms -- Time elapsed: 0.006 s <<< ERROR!
 java.lang.IllegalStateException: Could not initialize plugin: interface org.mockito.plugins.MockMaker (alternate: null)
 	at org.mockito.internal.configuration.plugins.PluginLoader$1.invoke(PluginLoader.java:85)
 	at jdk.proxy2/jdk.proxy2.$Proxy27.isTypeMockable(Unknown Source)

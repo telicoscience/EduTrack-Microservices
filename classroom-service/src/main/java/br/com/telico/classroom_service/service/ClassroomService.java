@@ -28,14 +28,13 @@ public class ClassroomService {
     }
 
     public Classroom create(CreateClassroomRequest request) {
-        Classroom classroom = new Classroom(
-                null,
-                request.getName(),
-                request.getGrade(),
-                request.getSchoolYear(),
-                request.getShift(),
-                request.getCapacity()
-        );
+        Classroom classroom = new Classroom();
+
+        classroom.setName(request.getName());
+        classroom.setGrade(request.getGrade());
+        classroom.setSchoolYear(request.getSchoolYear());
+        classroom.setShift(request.getShift());
+        classroom.setCapacity(request.getCapacity());
 
         return classroomRepository.save(classroom);
     }

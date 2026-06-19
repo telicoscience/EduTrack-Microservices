@@ -7,7 +7,6 @@ import br.com.telico.student_service.repository.StudentRepository;
 import br.com.telico.student_service.exception.StudentNotFoundException;
 import br.com.telico.student_service.dto.CreateStudentRequest;
 
-// Esse arquivo guarda as regras de negócios sobre os alunos. 
 @Service
 public class StudentService {
    private final StudentRepository studentRepository;
