@@ -167,12 +167,13 @@ The project currently includes:
 
 ### Classroom Service
 
-- Initial `classroom-service` module
-- Classroom entity mapped with JPA
-- Repository layer with Spring Data JPA
-- Service layer for classroom operations
-- Controller layer for classroom REST endpoints
-- Full classroom CRUD endpoints
+- Full classroom CRUD
+- PostgreSQL persistence
+- JPA entity mapping
+- Repository, service and controller layers
+- 404 handling for missing classrooms
+- Unit tests
+- OpenAPI / Swagger documentation
 
 ## Frontend
 
@@ -619,19 +620,15 @@ cd student-service
 
 ## Sprint 4 - `classroom-service`
 
-- [x] Initial Spring Boot module setup
-- [x] Classroom entity
-- [x] Classroom repository
-- [x] Classroom service layer
-- [x] Classroom controller
+- [x] Classroom CRUD
 - [x] `GET /classrooms`
 - [x] `GET /classrooms/{id}`
 - [x] `POST /classrooms`
 - [x] `PUT /classrooms/{id}`
 - [x] `DELETE /classrooms/{id}`
-- [ ] Classroom validation
-- [ ] Classroom 404 handling
-- [ ] Classroom tests
+- [x] Classroom 404 handling
+- [x] Classroom unit tests
+- [x] OpenAPI / Swagger
 
 ## Sprint 5 - `activity-service`
 
@@ -711,6 +708,12 @@ The classroom service is available at:
 
 ```text
 http://localhost:8082
+```
+
+Classroom service Swagger UI:
+
+```text
+http://localhost:8082/swagger-ui/index.html
 ```
 
 ## Run the Frontend
