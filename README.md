@@ -81,6 +81,7 @@ The main goal is to build an incremental application that can be clearly explain
 - RabbitMQ messaging integration
 - Spring Cloud Gateway
 - GitHub Actions
+- HTTPS-ready deployment configuration
 
 ---
 
@@ -661,12 +662,15 @@ cd student-service
 
 - [ ] GitHub Actions
 - [ ] Complete Dockerization
+- [ ] HTTPS-ready deployment configuration
 - [ ] Integration tests
 - [ ] Final README
 
 ---
 
 # Running the Project
+
+This project currently runs in a local development environment over HTTP. HTTPS configuration is planned for production deployment.
 
 ## Configure Local Environment
 
