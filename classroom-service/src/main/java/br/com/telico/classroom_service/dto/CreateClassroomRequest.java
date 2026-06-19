@@ -1,6 +1,9 @@
 package br.com.telico.classroom_service.dto;
 
+import jakarta.validation.constraints.NotBlank;
+
 public class CreateClassroomRequest {
+    @NotBlank
     private String name;
     private String grade;
     private Integer schoolYear;

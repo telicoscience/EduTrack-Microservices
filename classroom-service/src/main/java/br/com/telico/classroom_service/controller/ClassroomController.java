@@ -34,7 +34,7 @@ public class ClassroomController {
     }
 
     @PostMapping("/classrooms")
-    public Classroom create(@RequestBody CreateClassroomRequest request) {
+    public Classroom create(@Valid @RequestBody CreateClassroomRequest request) {
         return classroomService.create(request);
     }
 
