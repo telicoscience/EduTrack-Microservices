@@ -130,12 +130,14 @@ At this stage, `student-service` and the frontend contain application code. The 
 The project currently includes:
 
 - A functional `student-service`
-- A functional `classroom-service` with basic CRUD
-- A routed frontend integrated with `student-service`
+- A functional `classroom-service`
+- A React frontend integrated with both backend services
 - Student CRUD endpoints
 - Classroom CRUD endpoints
+- Classroom creation and editing pages
 - Input validation
 - Global validation error handling
+- OpenAPI / Swagger documentation
 - Basic unit tests
 - Frontend and backend integration
 - PostgreSQL persistence
@@ -178,14 +180,17 @@ The project currently includes:
 
 ## Frontend
 
-- Dashboard with total student count and API availability status
+- Dashboard with student count and API availability status
 - Navigation with React Router
-- Student listing in a table
+- Student listing page
 - Student details page
-- Dedicated search-by-name page
+- Student search page
+- Classroom listing page
+- Classroom creation page
+- Classroom editing page
 - Spring Boot API integration
 - Basic API error handling
-- Scaffold pages for student creation and API status
+- Frontend routing
 
 ---
 
@@ -546,8 +551,12 @@ The project already demonstrates:
 - Initial Docker Compose setup
 - Unit testing with JUnit and Mockito
 - Frontend and backend integration
+- CRUD frontend integration
+- Form handling with React
 - React consuming a Java API
+- Browser Fetch API
 - Client-side routing with React Router
+- Cross-Origin Resource Sharing (CORS) configuration for local development
 - JPA entity mapping
 - Repository pattern
 - Spring Data JPA query methods
@@ -631,34 +640,50 @@ cd student-service
 - [x] Classroom unit tests
 - [x] OpenAPI / Swagger
 
-## Sprint 5 - `activity-service`
+## Sprint 5 - Frontend
+
+- [x] React + Vite setup
+- [x] Navigation with React Router
+- [x] Dashboard
+- [x] Student listing
+- [x] Student details
+- [x] Student search
+- [x] Classroom listing
+- [x] Classroom creation
+- [x] Classroom editing
+- [ ] Classroom deletion
+- [ ] Student creation integration
+- [ ] Student editing
+- [ ] Student deletion
+
+## Sprint 6 - `activity-service`
 
 - [ ] Activity registration
 - [ ] Activity types
 - [ ] Classroom integration
 
-## Sprint 6 - `grade-service`
+## Sprint 7 - `grade-service`
 
 - [ ] Grade registration
 - [ ] Average calculation
 - [ ] Academic history
 
-## Sprint 7 - RabbitMQ
+## Sprint 8 - RabbitMQ
 
 - [ ] Events between services
 - [ ] Message publishing and consumption
 
-## Sprint 8 - `notification-service`
+## Sprint 9 - `notification-service`
 
 - [ ] Event consumption
 - [ ] Notification simulation
 
-## Sprint 9 - API Gateway
+## Sprint 10 - API Gateway
 
 - [ ] Centralized gateway
 - [ ] Service routing
 
-## Sprint 10 - Quality and DevOps
+## Sprint 11 - Quality and DevOps
 
 - [ ] GitHub Actions
 - [ ] Complete Dockerization
@@ -734,6 +759,13 @@ The frontend is available at:
 http://localhost:5173
 ```
 
+The frontend currently communicates with:
+
+| Service | URL |
+| --- | --- |
+| student-service | http://localhost:8081 |
+| classroom-service | http://localhost:8082 |
+
 ---
 
 # Available Local Services
@@ -771,6 +803,30 @@ The local PostgreSQL service ports are listed below:
 
 ---
 
+# Frontend Roadmap
+
+Current frontend capabilities:
+
+- Dashboard
+- Student listing
+- Student search
+- Student details
+- Classroom listing
+- Classroom creation
+- Classroom editing
+
+Next planned features:
+
+- Classroom deletion
+- Student creation
+- Student editing
+- Student deletion
+- Shared API service layer
+- Authentication screens
+- Responsive layout improvements
+
+---
+
 # Learning Goals
 
 This project is being used to consolidate knowledge of:
@@ -796,10 +852,8 @@ This project is being used to consolidate knowledge of:
 
 # Notes
 
-The `student-service` currently uses PostgreSQL persistence. The other microservices will be implemented in future sprints.
+The `student-service` and `classroom-service` currently use PostgreSQL persistence with Spring Data JPA and Hibernate.
 
-## Data Persistence
+The frontend communicates directly with both services during local development.
 
-The project uses PostgreSQL with Spring Data JPA and Hibernate for data persistence.
-
-For more details, see [`docs/persistence.md`](docs/persistence.md).
+Additional microservices will be implemented incrementally following the project roadmap.
