@@ -1,6 +1,10 @@
 # EduTrack Microservices
 
-Educational system built with a microservices architecture using Java, Spring Boot, and React.
+EduTrack is an educational management and academic progress platform built with Java, Spring Boot, and React. It combines EduTrack Web (academic management) and Boletim+ (planned mobile companion) on a shared backend.
+
+## Product vision
+
+Teachers manage classes, assessments and grades; students monitor their own progress; guardians monitor linked students; school managers review authorized academic indicators. The mobile client is planned with React Native and Expo. Both clients will use shared API contracts and role- and resource-based authorization. No mobile app or production authentication is currently implemented.
 
 ---
 
@@ -101,6 +105,8 @@ The planned service boundaries are shown below:
 | `grade-service` | Grade and average management |
 | `notification-service` | Event consumption and notifications |
 | `api-gateway` | Centralized application gateway |
+| Identity and access (planned) | Authentication, role and resource authorization |
+| Academic analytics (planned) | Progress indicators and reporting |
 
 ---
 
@@ -121,7 +127,7 @@ edutrack-microservices/
 `-- README.md
 ```
 
-At this stage, `student-service` and the frontend contain application code. The other service directories are placeholders for future sprints.
+At this stage, `student-service`, `classroom-service` and the web frontend contain application code. Other service directories are placeholders. The Boletim+ mobile client is planned.
 
 ---
 
@@ -512,7 +518,7 @@ Missing students requested through `GET /students/{id}` or `PUT /students/{id}` 
 
 # Frontend
 
-The project includes an initial React + Vite frontend that visually demonstrates consumption of the `student-service` API.
+EduTrack Web is the React + Vite client for both existing services. Classroom creation has been manually verified; classroom editing is implemented but end-to-end verification remains pending. Boletim+ will complement the web client.
 
 ## Frontend Features
 
@@ -640,7 +646,7 @@ cd student-service
 - [x] Classroom unit tests
 - [x] OpenAPI / Swagger
 
-## Sprint 5 - Frontend
+## Sprint 5 - Frontend and Product Discovery
 
 - [x] React + Vite setup
 - [x] Navigation with React Router
@@ -650,46 +656,79 @@ cd student-service
 - [x] Student search
 - [x] Classroom listing
 - [x] Classroom creation
-- [x] Classroom editing
+- [x] Classroom editing page implementation
+- [ ] Verify classroom editing end to end
 - [ ] Classroom deletion
 - [ ] Student creation integration
 - [ ] Student editing
 - [ ] Student deletion
+- [ ] Centralize API configuration and requests
+- [ ] Document product vision and user journeys
 
-## Sprint 6 - `activity-service`
+## Sprint 6 - Academic Domain
+
+- [ ] Model enrollment, subjects, teaching assignments and academic periods
+- [ ] Implement enrollment and subject relationships using service-owned IDs
+- [ ] Define guardian-student relationships and access rules
+
+## Sprint 7 - `activity-service`
 
 - [ ] Activity registration
 - [ ] Activity types
 - [ ] Classroom integration
 
-## Sprint 7 - `grade-service`
+## Sprint 8 - `grade-service` and Report Cards
 
 - [ ] Grade registration
 - [ ] Average calculation
 - [ ] Academic history
+- [ ] Configurable grading periods, weights and recovery rules
+- [ ] Report card API and web views
 
-## Sprint 8 - RabbitMQ
+## Sprint 9 - Identity and Access
+
+- [ ] Authentication and role-based authorization
+- [ ] Enforce student, guardian, teacher and school resource boundaries
+- [ ] Audit grade changes and protect personal data
+
+## Sprint 10 - Boletim+ Mobile
+
+- [ ] Validate IHC prototypes and user journeys
+- [ ] Initialize React Native + Expo client
+- [ ] Implement authenticated report cards and progress views
+- [ ] Test accessibility and usability with synthetic data
+
+## Sprint 11 - RabbitMQ and Notifications
 
 - [ ] Events between services
 - [ ] Message publishing and consumption
 
-## Sprint 9 - `notification-service`
+### `notification-service`
 
 - [ ] Event consumption
 - [ ] Notification simulation
 
-## Sprint 10 - API Gateway
+## Sprint 12 - API Gateway
 
 - [ ] Centralized gateway
 - [ ] Service routing
 
-## Sprint 11 - Quality and DevOps
+### Quality and DevOps
 
 - [ ] GitHub Actions
 - [ ] Complete Dockerization
 - [ ] HTTPS-ready deployment configuration
 - [ ] Integration tests
 - [ ] Final README
+
+## Sprint 13 - Learning Analytics
+
+- [ ] Descriptive performance indicators and progress trends
+- [ ] Authorized dashboards and data quality checks
+
+## Sprint 14 - AI Exploration
+
+- [ ] Evaluate educational use cases, privacy and human oversight before implementation
 
 ---
 
@@ -854,6 +893,6 @@ This project is being used to consolidate knowledge of:
 
 The `student-service` and `classroom-service` currently use PostgreSQL persistence with Spring Data JPA and Hibernate.
 
-The frontend communicates directly with both services during local development.
+The frontend communicates directly with both services during local development. Classroom CORS permits the local web origin (http://localhost:5173); production access policies remain planned. Use synthetic data until authentication, authorization and privacy controls are implemented.
 
 Additional microservices will be implemented incrementally following the project roadmap.
