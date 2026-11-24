@@ -22,6 +22,57 @@ Current target architecture for the EduTrack ecosystem.
 
 ---
 
+# Product and User Interfaces
+
+EduTrack combines a web workspace for academic management with Boletim+, a planned mobile companion for school grade monitoring. Both clients are intended to share the same backend and academic records.
+
+## EduTrack Web — current implementation
+
+The existing React dashboard provides student and classroom management foundations. Gradebook, assessment management, role-specific dashboards and authentication are future deliveries.
+
+## Boletim+ — interactive mobile prototype
+
+[Explore the original Figma prototype](https://www.figma.com/design/MLTzBnX2hQAwLdYAk0jAas).
+
+The screenshots below are exported from the original Portuguese-language HCI prototype. They use demonstration data and depict intended interaction, not a deployed mobile application. Login, local saving and synchronization are simulated in Figma.
+
+<p align="center"><img src="screenshot/boletim-plus/login.png" alt="Boletim+ role selection screen" width="220"></p>
+
+### 1. Teacher
+
+Teachers select their assigned class, subject and academic period, enter grades, review class performance and manage recovery grades. The prototype includes validation cues, unsaved-change warnings and simulated offline saving and synchronization. The planned web workspace will support bulk grade entry and academic management; mobile provides a compact workflow.
+
+<p align="center"><img src="screenshot/boletim-plus/teacher-classes.png" alt="Teacher class selection" width="220"> <img src="screenshot/boletim-plus/teacher-grades.png" alt="Teacher grade entry" width="220"> <img src="screenshot/boletim-plus/teacher-performance.png" alt="Teacher class performance" width="220"></p>
+
+### 2. Student
+
+Students consult their own subjects and grade history, including provisional and final academic results. The mobile interface prioritizes clear subject selection and understandable grades. Future access must be restricted to the authenticated student's records.
+
+<p align="center"><img src="screenshot/boletim-plus/student-subjects.png" alt="Student subject list" width="220"> <img src="screenshot/boletim-plus/student-report.png" alt="Student mathematics grades" width="220"></p>
+
+### 3. Parent / Guardian
+
+Guardians select a linked dependent, view their report card and inspect subject-level results. The mobile interface supports switching between dependents without exposing unrelated students. Guardian links and read-only permissions must be enforced by the backend.
+
+<p align="center"><img src="screenshot/boletim-plus/guardian-dependents.png" alt="Guardian dependent selection" width="220"> <img src="screenshot/boletim-plus/guardian-report.png" alt="Guardian student report card" width="220"></p>
+
+### 4. School Manager — planned interface
+
+The school manager will primarily use EduTrack Web to oversee authorized classes, teaching assignments, enrollment and academic indicators. Proposed screens include an overview dashboard, class and subject filters, grade publication status and aggregate performance reports. This role has no dedicated Figma prototype yet; the existing web dashboard above is not a manager-specific implementation.
+
+## Interface delivery status
+
+| User role | Primary interface | Current status |
+| --- | --- | --- |
+| Teacher | Web and mobile | Mobile interaction prototyped; web CRUD foundations available |
+| Student | Mobile | Mobile interaction prototyped |
+| Parent / Guardian | Mobile | Mobile interaction prototyped |
+| School Manager | Web | Planned; dedicated interface not designed |
+
+The production system must enforce role and resource authorization, audit grade changes, protect minors' data and prevent unauthorized access. Real student data must not be used in the current unauthenticated development environment.
+
+---
+
 # Purpose
 
 This portfolio project was created to consolidate knowledge of modern backend development, microservices, and frontend integration.
