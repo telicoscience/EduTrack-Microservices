@@ -90,19 +90,38 @@ export default function EditClassroomPage() {
   }
 
   if (error) {
-    return (
-      <div className="container">
-        <h1>Edit Classroom</h1>
-        <p className="error">{error}</p>
+  return (
+    <div className="container classroom-error">
+      <h1>Edit Classroom</h1>
 
-        <button 
-          className="button"
-          onClick={() => navigate("/classrooms")}>
-          Back to classrooms
-        </button>
+      <div className="classroom-error-message" role="alert">
+        <svg
+          className="classroom-error-icon"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          aria-hidden="true"
+        >
+          <path d="M12 3L2 21h20L12 3z" />
+          <path d="M12 9v4" />
+          <path d="M12 17h.01" />
+        </svg>
+
+        <p>{error}</p>
       </div>
-    );
-  }
+
+      <button
+        className="button classroom-back-button"
+        onClick={() => navigate("/classrooms")}
+      >
+        ← Back to Classrooms
+      </button>
+    </div>
+  );
+}
 
   return (
     <div className="container">
