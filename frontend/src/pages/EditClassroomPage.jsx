@@ -15,14 +15,20 @@ export default function EditClassroomPage() {
 
   const [loading, setLoading] = useState(true);
 
+  const [error, setError] = useState("");
   useEffect(() => {
     loadClassroom();
-  }, []);
+  }, [id]);
 
   async function loadClassroom() {
+    setLoading(true);
+    setError("");
     try {
-      const response = await fetch(`/classrooms/${id}`);
+      const response = await fetch(`http://localhost:8082/classrooms/${id}`);
 
+      if (response.status === 404) {
+        throw new Error("Classroom not found.");
+      }
       if (!response.ok) {
         throw new Error("Failed to load classroom");
       }
@@ -38,7 +44,7 @@ export default function EditClassroomPage() {
       });
     } catch (error) {
       console.error(error);
-      alert("Error loading classroom.");
+      setError(error.message);
     } finally {
       setLoading(false);
     }
@@ -57,7 +63,7 @@ export default function EditClassroomPage() {
     event.preventDefault();
 
     try {
-      const response = await fetch(`/classrooms/${id}`, {
+      const response = await fetch(`http://localhost:8082/classrooms/${id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -81,6 +87,21 @@ export default function EditClassroomPage() {
 
   if (loading) {
     return <p>Loading...</p>;
+  }
+
+  if (error) {
+    return (
+      <div className="container">
+        <h1>Edit Classroom</h1>
+        <p className="error">{error}</p>
+
+        <button 
+          className="button"
+          onClick={() => navigate("/classrooms")}>
+          Back to classrooms
+        </button>
+      </div>
+    );
   }
 
   return (
